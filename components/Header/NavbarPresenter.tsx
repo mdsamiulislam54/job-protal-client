@@ -1,16 +1,22 @@
+"use client"
 import { NavItem } from '@/types/navItem'
 import Logo from '../Logo/Logo';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { ModeToggle } from '../ToggleMode/ToggleMode';
+import { Menu, X } from 'lucide-react';
+import MobileNavbar from './MobileNavbar';
+import { AnimatePresence, motion } from "framer-motion";
+
 type Props = {
     navItem: NavItem[];
     scrollY: number;
     isOpen: boolean;
-    pathName: string
+    pathName: string;
+    handleOpenMenu: () => void;
 }
 
-export const NavbarPresenter = ({ scrollY, navItem, isOpen, pathName }: Props) => {
+export const NavbarPresenter = ({ scrollY, navItem, isOpen, pathName, handleOpenMenu }: Props) => {
     console.log(scrollY)
     return (
         <nav className={`py-4 
@@ -21,7 +27,7 @@ export const NavbarPresenter = ({ scrollY, navItem, isOpen, pathName }: Props) =
                 <div>
                     <Logo />
                 </div>
-                <div className='flex items-center gap-4'>
+                <div className='lg:flex hidden items-center gap-4  '>
                     {
                         navItem.map((item) => {
 
@@ -41,10 +47,24 @@ export const NavbarPresenter = ({ scrollY, navItem, isOpen, pathName }: Props) =
 
                 <div className='flex items-center gap-2'>
                     <ModeToggle />
-                    <Button children="Login" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne '/>
-                    <Button children="Registration" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne ' />
+                    <Button children="Login" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne hidden lg:block ' />
+                    <Button children="Registration" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne hidden lg:block ' />
+                    <Button size="icon" onClick={handleOpenMenu} className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne  font-bold flex lg:hidden '>
+                        {isOpen ? <X/> :<Menu />}
+                    </Button>
+
                 </div>
             </div>
+            <AnimatePresence>
+            {
+                isOpen ? (
+                    <MobileNavbar navItem={navItem} handleOpenMenu={handleOpenMenu} />
+                ) : (
+                    null
+                )
+            }
+            </AnimatePresence>
+
         </nav>
     )
 }

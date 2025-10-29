@@ -24,7 +24,9 @@ const Navbar = () => {
     { name: "Contact", href: "/contact", icon: Phone },
   ];
 
-
+const handleOpenMenu = () => {
+  setIsOpen(!isOpen);
+}
 
   return (
     <div>
@@ -32,6 +34,7 @@ const Navbar = () => {
         navItem={navItem}
         scrollY= {scrollY}
         isOpen = {isOpen}
+        handleOpenMenu={handleOpenMenu}
         pathName={pathName}
       />
     </div>
