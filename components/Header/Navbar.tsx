@@ -7,7 +7,8 @@ import { NavbarPresenter } from "./NavbarPresenter";
 
 const Navbar = () => {
   const [scrollY, setScrollY] = useState(0);
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const pathName  = usePathname()
   useEffect(() => {
 
     const handleScrollY = () => setScrollY(window.scrollY);
@@ -24,12 +25,14 @@ const Navbar = () => {
   ];
 
 
+
   return (
     <div>
       <NavbarPresenter
         navItem={navItem}
         scrollY= {scrollY}
         isOpen = {isOpen}
+        pathName={pathName}
       />
     </div>
   )

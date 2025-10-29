@@ -2,12 +2,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Syne:wght@400..800&display=swap');
 
 @import "tailwindcss";
+@theme {
+  --color-primary: #9d5cff;
+  --color-secondary: #b5b5b5;
+  --color-ascent: #cfa8ff;
+  --color-background: #ffffff;
+  --color-background-dark: #111111;
+  --color-text: #111111;
+  --color-text-dark: #ffffff;
+}
+
+/* hybrid fallback system */
+:root {
+  --primary: var(--color-primary);
+  --secondary: var(--color-secondary);
+  --ascent: var(--color-ascent);
+  --background: var(--color-background);
+  --text: var(--color-text);
+}
+
+.dark {
+  --background: var(--color-background-dark);
+  --text: var(--color-text-dark);
+}
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 @custom-variant light (&:is(:not(.dark) *));
-
 
 /* font */
 
@@ -20,7 +42,7 @@
 
 /* font */
 .fixed-nav {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -43,4 +65,13 @@
 
 .custom-container {
   @apply w-full max-w-[1180px] mx-auto px-4;
+}
+
+@layer utilities {
+  .hero-gradient {
+    background: radial-gradient(125% 125% at 50% 10%, #ffffff 30%, #9d5cff 100%);
+  }
+  .dark .hero-gradient {
+    background: radial-gradient(125% 125% at 50% 10%, #1b1b1b 40%, #4b2f74 100%);
+  }
 }
