@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 // @ts-ignore: CSS import has no type declarations in this project
 import "./globals.css";
+import { ThemeProvider } from "@/src/components/theme-provider/theme-provider";
+import { ModeToggle } from "@/src/components/ToggleMode/ToggleMode";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +30,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+
+          <ModeToggle/>
+          {children}
+
+        </ThemeProvider>
       </body>
     </html>
   );
