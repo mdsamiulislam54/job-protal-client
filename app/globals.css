@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Syne:wght@400..800&display=swap');
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -5,3 +8,39 @@
 
 @custom-variant light (&:is(:not(.dark) *));
 
+
+/* font */
+
+  .syne{
+     font-family: "Syne", sans-serif;
+  }
+  .geist{
+     font-family: "Geist", sans-serif;
+  }
+
+/* font */
+.fixed-nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  
+  animation: slideDown 3s ease-out forwards; 
+
+  z-index: 90;
+
+}
+
+@keyframes slideDown {
+
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.custom-container {
+  @apply w-full max-w-[1180px] mx-auto px-4;
+}
