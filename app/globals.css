@@ -8,7 +8,7 @@
   --color-ascent: #cfa8ff;
   --color-background: #ffffff;
   --color-background-dark: #111111;
-  --color-text: #111111;
+  --color-texts: #111111;
   --color-text-dark: #ffffff;
 }
 
@@ -18,7 +18,7 @@
   --secondary: var(--color-secondary);
   --ascent: var(--color-ascent);
   --background: var(--color-background);
-  --text: var(--color-text);
+  --texts: var(--color-text);
 }
 
 .dark {
@@ -72,6 +72,6 @@
     background: radial-gradient(125% 125% at 50% 10%, #ffffff 30%, #9d5cff 100%);
   }
   .dark .hero-gradient {
-    background: radial-gradient(125% 125% at 50% 10%, #1b1b1b 40%, #4b2f74 100%);
+    background: radial-gradient(125% 125% at 50% 10%, #1b1b1b 40%, #4b2f74 100% );
   }
 }
