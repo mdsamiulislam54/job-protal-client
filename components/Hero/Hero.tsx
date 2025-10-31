@@ -42,7 +42,7 @@ const Hero = () => {
                     The Simplest Way to Land Your Dream Job
                 </h1>
 
-                <div className=" justify-center gap-10 mt-10 grid grid-cols-1 max-md:w-full sm:grid-cols-2 md:grid-cols-4">
+                <div className=" justify-center gap-10 mt-10 grid grid-cols-1 w-full sm:grid-cols-2 md:grid-cols-4">
                     {stats.map((item, index) => (
                         <div
                             key={index}

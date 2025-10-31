@@ -1,0 +1,31 @@
+Hero Section
+➤ Attractive headline + search bar (Job title / Location / Category)
+➤ CTA: “Find Job” / “Post Job”
+
+Job Categories
+➤ IT, Finance, Marketing, Education, Healthcare ইত্যাদি
+➤ Icon সহ card design
+
+Featured Jobs
+➤ Highlight করা কিছু job post (top companies / latest)
+
+Top Companies / Hiring Now
+➤ Company logo + number of active jobs + “View Jobs” button
+
+How It Works
+➤ Step by step (1. Search job → 2. Apply → 3. Get Hired)
+
+Why Choose Us
+➤ Short points or icons (Trusted, Verified Jobs, Career Support ইত্যাদি)
+
+Testimonials / Success Stories
+➤ যারা চাকরি পেয়েছে তাদের review
+
+Blog / Career Tips
+➤ Interview tips, CV writing guide, career advice
+
+Newsletter / Subscribe Section
+➤ “Get latest jobs in your inbox”
+
+Footer
+➤ Quick Links, Contact info, Social Media links, Privacy Policy ইত্যাদি

@@ -64,7 +64,7 @@
 }
 
 .custom-container {
-  @apply w-full max-w-[1180px] mx-auto px-4;
+  @apply w-full max-w-[1200px] mx-auto px-4;
 }
 
 @layer utilities {
