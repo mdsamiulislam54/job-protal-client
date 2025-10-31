@@ -17,10 +17,10 @@ type Props = {
 }
 
 export const NavbarPresenter = ({ scrollY, navItem, isOpen, pathName, handleOpenMenu }: Props) => {
-    console.log(scrollY)
+
     return (
         <nav className={`py-4 
-        ${scrollY > 0 ? "fixed-nav bg-primary" : pathName === '/' ? "bg-Primary  absolute top-0 w-full" : ""}
+        ${scrollY > 0 ? "fixed-nav bg-background dark:bg-background-dark" : pathName === '/' ? "bg-Primary  absolute top-0 w-full" : "shadow-md dark:shadow-gray-800 bg-background-light dark:bg-background-dark  "}
         
         `}>
             <div className="custom-container  flex justify-between items-center ">

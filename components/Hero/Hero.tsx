@@ -29,7 +29,7 @@ const Hero = () => {
         },
     ];
     return (
-        <div className=' min-h-screen flex flex-col justify-center items-center hero-gradient  max-sm:py-20 md:pt-24   
+        <div className=' min-h-screen flex flex-col justify-center items-center hero-gradient  max-sm:py-20 md:py-24   
         '
 
 

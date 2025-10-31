@@ -16,7 +16,7 @@ const MobileNavbar = ({ navItem, handleOpenMenu }: Props) => {
         exit={{ x: '-100%', scale: 0.9 }}
         transition={{ type: 'tween', duration: 0.3 }}
         
-        className='fixed top-0 left-0 w-[50%] sm:w-[30%] z-100 hero-gradient shadow h-full block lg:hidden'>
+        className='fixed top-0 left-0 w-[50%] sm:w-[30%] z-100 bg-background dark:bg-background-dark shadow h-full block lg:hidden'>
             <div className='p-4 flex flex-col gap-6 mt-10'>
 
                 <Logo />
