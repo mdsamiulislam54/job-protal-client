@@ -29,3 +29,30 @@ Newsletter / Subscribe Section
 
 Footer
 ➤ Quick Links, Contact info, Social Media links, Privacy Policy ইত্যাদি
+
+
+🚀 Learning Big-O & Algorithm Today!
+
+Spent some time today practicing algorithm problems and understanding Big-O notation.
+
+💡 Key takeaways:
+
+Algorithm → step-by-step instructions to solve a problem
+
+Big-O → measures efficiency (time & memory)
+
+Common types: O(1), O(n), O(n²), O(log n)
+
+Practice is key! Solving small functions helps understand performance & scalability
+
+Some examples I worked on:
+
+Single & nested loops
+
+Linear vs logarithmic loops
+
+Constant time operations
+
+Feeling more confident about analyzing function performance and preparing for coding challenges! 💪
+
+#JavaScript #ReactJS #FrontendDevelopment #CodingTips #Algorithm #BigONotation #WebDevelopment #LearningJourney

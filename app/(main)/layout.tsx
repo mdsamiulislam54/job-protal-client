@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-
+import SessionProvider from "@/lib/Provider/SessionProvider/SessionProvider";
 // @ts-ignore: CSS import has no type declarations in this project
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider/theme-provider";
 
 import Navbar from "@/components/Header/Navbar";
+
 
 export const metadata: Metadata = {
   title: "NextHire",
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body
         className={`antialiased geist`}
       >
+        <SessionProvider>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -38,6 +40,7 @@ export default function RootLayout({
           </main>
 
         </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );

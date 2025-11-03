@@ -47,22 +47,26 @@ export const NavbarPresenter = ({ scrollY, navItem, isOpen, pathName, handleOpen
 
                 <div className='flex items-center gap-2'>
                     <ModeToggle />
-                    <Button children="Login" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne hidden lg:block ' />
-                    <Button children="Registration" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne hidden lg:block ' />
+                    <Link href="/auth/login" >
+                        <Button children="Login" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne hidden lg:block ' />
+                    </Link>
+                    <Link href={'/auth/register'}>
+                        <Button children="Registration" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne hidden lg:block ' />
+                    </Link>
                     <Button size="icon" onClick={handleOpenMenu} className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne  font-bold flex lg:hidden '>
-                        {isOpen ? <X/> :<Menu />}
+                        {isOpen ? <X /> : <Menu />}
                     </Button>
 
                 </div>
             </div>
             <AnimatePresence>
-            {
-                isOpen ? (
-                    <MobileNavbar navItem={navItem} handleOpenMenu={handleOpenMenu} />
-                ) : (
-                    null
-                )
-            }
+                {
+                    isOpen ? (
+                        <MobileNavbar navItem={navItem} handleOpenMenu={handleOpenMenu} />
+                    ) : (
+                        null
+                    )
+                }
             </AnimatePresence>
 
         </nav>
