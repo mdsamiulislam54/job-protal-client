@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider/theme-provider";
 
 import Navbar from "@/components/Header/Navbar";
+import ToastProvider from "@/lib/Provider/ToastProvider/ToastProvider";
 
 
 export const metadata: Metadata = {
@@ -20,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`antialiased geist`}
       >
@@ -29,7 +30,7 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
+        
         >
 
           <header>
@@ -38,7 +39,7 @@ export default function RootLayout({
           <main>
             {children}
           </main>
-
+        <ToastProvider/>
         </ThemeProvider>
         </SessionProvider>
       </body>

@@ -8,6 +8,9 @@ import { useState } from "react"
 import Link from "next/link"
 import { sign } from "crypto"
 import { signIn } from "next-auth/react"
+import { toast } from "react-toastify"
+import { handleAxiosError } from "@/lib/handleAxiosError/handleAxiosError"
+import { useRouter, useSearchParams } from "next/navigation"
 
 
 const LoginPage = () => {
@@ -17,7 +20,9 @@ const LoginPage = () => {
         email: '',
         password: '',
     })
-
+    const router = useRouter()
+    const searchParams = useSearchParams()
+    const callbackUrl = searchParams.get("callbackUrl") || '/'
     // handle credential
     const handleCredential = (type: string) => {
         if (type === 'user') {
@@ -47,14 +52,28 @@ const LoginPage = () => {
         }
     }
 
-    const handleLogin = (e:React.FormEvent<HTMLElement>) => {
+    const handleLogin = async (e: React.FormEvent<HTMLElement>) => {
         e.preventDefault();
-        console.log(formData);
-        signIn('credentials', {
+
+        const res = await signIn("credentials", {
             email: formData.email,
-            password: formData.password
+            password: formData.password,
+            redirect: false,
         });
-    }
+
+        if (res?.error) {
+            handleAxiosError(res.error);
+        } else {
+            toast.success("Login Successfully!", {
+                onClose: () => {
+                    router.push(callbackUrl || '/')
+                }
+            });
+
+
+        }
+    };
+
 
     return (
         <div className="flex justify-center items-center w-full min-h-screen">
@@ -76,6 +95,7 @@ const LoginPage = () => {
                     {/* Password */}
                     <div className="relative">
                         <Input
+
                             type={showPassword ? "text" : "password"}
                             onChange={(e) => setFormData({ ...formData, password: e.target.value })} value={formData.password} placeholder="Enter Your Password.." />
 
@@ -87,7 +107,7 @@ const LoginPage = () => {
                     {/* login button */}
                     <Button type="submit" className="w-full text-white cursor-pointer">Login</Button>
                     {/* login with google button  */}
-                    <Button type="button" className="w-full text-white cursor-pointer bg-black"><FcGoogle/> Login with Google</Button>
+                    <Button type="button" className="w-full text-white cursor-pointer bg-black"><FcGoogle /> Login with Google</Button>
 
                     <p className="flex justify-center">
                         Don't have an account? <Link href={'/auth/register'} className="text-blue-600 dark:text-primary ml-2 underline cursor-pointer">Register</Link>

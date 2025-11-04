@@ -8,8 +8,9 @@ import { useState } from "react"
 import Link from "next/link"
 import api from "@/lib/api/axios"
 import { toast } from "react-toastify"
-import { AxiosError } from "axios"
+
 import { handleAxiosError } from "@/lib/handleAxiosError/handleAxiosError"
+
 
 
 const RegisterPage = () => {
@@ -24,6 +25,8 @@ const RegisterPage = () => {
 
   })
 
+
+ 
 
 
   const handleRegister = async (e: React.FormEvent<HTMLElement>) => {

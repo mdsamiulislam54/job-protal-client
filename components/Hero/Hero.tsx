@@ -1,11 +1,10 @@
 "use client"
-import Image from 'next/image';
-import WordIcon from '../../media/earth.png';
-import { Earth } from 'lucide-react';
 import { Briefcase, Globe2, Building2, Users } from "lucide-react";
 import SearchBox from './SearchBox';
+import { useSession } from 'next-auth/react';
 
 const Hero = () => {
+    const {data:session} = useSession()
     const stats = [
         {
             icon: <Briefcase size={40} className="text-[--color-primary]" />,
@@ -28,14 +27,13 @@ const Hero = () => {
             label: "Active Employees",
         },
     ];
+
+    console.log(session?.user)
+
     return (
         <div className=' min-h-screen flex flex-col justify-center items-center hero-gradient  max-sm:py-20 md:py-24   
         '
-
-
-
         >
-
             <div className="custom-container md:space-y-14 space-y-8 flex flex-col justify-center items-center">
                 <p className='text-center syne text-sm sm:text-md font-bold'>Discover Jobs, Careers, and New Opportunities</p>
                 <h1 className="lg:text-5xl md:text-3xl text-2xl  font-extrabold text-center">

@@ -1,8 +1,8 @@
+import api from "@/lib/api/axios"
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
+
 const handler = NextAuth({
-
-
     providers: [
         CredentialsProvider({
             name: "Credentials",
@@ -12,27 +12,30 @@ const handler = NextAuth({
             },
 
             async authorize(credentials, req) {
-                // You need to provide your own logic here that takes the credentials
-                // submitted and returns either a object representing a user or value
-                // that is false/null if the credentials are invalid.
-                // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
-                // You can also use the `req` object to obtain additional parameters
-                // (i.e., the request IP address)
-                // const res = await fetch("/your/endpoint", {
-                //     method: 'POST',
-                //     body: JSON.stringify(credentials),
-                //     headers: { "Content-Type": "application/json" }
-                // })
-                // const user = await res.json()
+                if (!credentials) {
+                    console.log("No credentials provided");
+                    return null
+                }
+                const { email, password } = credentials
+                const res = await api.post('/login', { email, password })
 
-                // If no error and we have user data, return it
-                // if (res.ok && user) {
-                //     return user
-                // }
-                // Return null if user data could not be retrieved
-                // return null
-                console.log("Credentials", credentials);
-                return credentials as any
+                // axios responses typically contain data; adapt as needed for your API
+                const user = res?.data?.newUser ?? res?.data
+
+                if (res?.status === 200) {
+                    console.log(user)
+                   
+                    return {
+                        id: user.id,
+                        name: user.name,
+                        email: user.email,
+                        role: user.role,
+                        image: user.photoUrl
+                    }
+                }
+
+
+                return null
             },
 
 
@@ -44,10 +47,33 @@ const handler = NextAuth({
         signIn: '/auth/login',
     },
 
-    session:{
-        strategy:"jwt",
-        maxAge:24 *64 *60
+    session: {
+        strategy: "jwt",
+          maxAge: 24 * 60 * 60
+    },
+    secret: process.env.NEXT_AUTH_SECRET as string,
+    callbacks: {
+        async jwt({ token, user }) {
+            if (user) {
+                token.id = user.id;
+                token.role = user?.role;
+                token.image = user.image;
+            }
+            return token;
+        },
+        async session({ session, token }) {
+            console.log("Session", session)
+            if (session.user && token) {
+                session.user.id = token.id as string;
+                session.user.role = token.role as string;
+                session.user.image = token.image as string;
+            }
+            return session;
+        },
     }
+
+
+
 
 })
 

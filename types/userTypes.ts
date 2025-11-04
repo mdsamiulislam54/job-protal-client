@@ -4,5 +4,5 @@ export interface User {
     photoUrl: string,
     email:string,
     password:string,
-    role:[string]
+    role:string[]
 }
