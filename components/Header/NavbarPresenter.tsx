@@ -21,70 +21,73 @@ type Props = {
 export const NavbarPresenter = ({ scrollY, navItem, isOpen, pathName, handleOpenMenu }: Props) => {
     const { data: session } = useSession()
     return (
-        <nav className={`py-4 
-        ${scrollY > 0 ? "fixed-nav bg-background dark:bg-background-dark" : pathName === '/' ? "bg-Primary  absolute top-0 w-full" : "shadow-md dark:shadow-gray-800 bg-background-light dark:bg-background-dark  "}
+        <>
+            <nav className={`py-4 z-100 relative
+        ${scrollY > 0 ? "fixed-nav bg-background dark:bg-background-dark relative " : pathName === '/' ? "bg-Primary  absolute top-0 w-full" : "shadow-md dark:shadow-gray-800 bg-background-light dark:bg-background-dark  "}
         
         `}>
-            <div className="custom-container  flex justify-between items-center ">
-                <div>
-                    <Logo />
-                </div>
-                <div className='lg:flex hidden items-center gap-4  '>
-                    {
-                        navItem.map((item) => {
+                <div className="custom-container  flex justify-between items-center ">
+                    <div>
+                        <Logo />
+                    </div>
+                    <div className='lg:flex hidden items-center gap-4  '>
+                        {
+                            navItem.map((item) => {
 
-                            return (
-                                <Link href={item.href} key={item.href} className='
+                                return (
+                                    <Link href={item.href} key={item.href} className='
                                 flex  items-center gap-2 font-bold tracking-wide
                                 '>
-                                    {item.icon ? <item.icon size={20} className="inline text-primary" /> : null}
-                                    <span>
-                                        {item.name}
-                                    </span>
-                                </Link>
+                                        {item.icon ? <item.icon size={20} className="inline text-primary" /> : null}
+                                        <span>
+                                            {item.name}
+                                        </span>
+                                    </Link>
+                                )
+                            })
+                        }
+                    </div>
+
+                    <div className='flex items-center gap-2'>
+                        <ModeToggle />
+                        {
+                            !session?.user ? (
+                                <div className='flex gap-2'>
+                                    <Link href="/auth/login" >
+                                        <Button children="Login" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne hidden lg:block ' />
+                                    </Link>
+                                    <Link href={'/auth/register'}>
+                                        <Button children="Registration" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne hidden lg:block ' />
+                                    </Link>
+                                </div>
+                            ) : (
+
+                                <button onClick={() => signOut()}>
+                                    <Image src={session.user.image || ''} width={100} height={100} alt={session.user.name as string} className='w-10 h-10 rounded-full border-2 border-dotted border-primary flex justify-center items-center cursor-pointer' />
+                                </button>
+
                             )
-                        })
-                    }
+
+
+                        }
+                        <Button size="icon" onClick={handleOpenMenu} className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne  font-bold flex lg:hidden '>
+                            {isOpen ? <X /> : <Menu />}
+                        </Button>
+
+                    </div>
                 </div>
 
-                <div className='flex items-center gap-2'>
-                    <ModeToggle />
-                    {
-                        !session?.user ? (
-                            <div className='flex gap-2'>
-                                <Link href="/auth/login" >
-                                    <Button children="Login" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne hidden lg:block ' />
-                                </Link>
-                                <Link href={'/auth/register'}>
-                                    <Button children="Registration" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne hidden lg:block ' />
-                                </Link>
-                            </div>
-                        ) : (
 
-                            <button onClick={()=> signOut()}>
-                                <Image src={session.user.image || ''} width={100} height={100} alt={session.user.name as string} className='w-10 h-10 rounded-full border-2 border-dotted border-primary flex justify-center items-center cursor-pointer' />
-                            </button>
-
-                        )
-
-
-                    }
-                    <Button size="icon" onClick={handleOpenMenu} className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne  font-bold flex lg:hidden '>
-                        {isOpen ? <X /> : <Menu />}
-                    </Button>
-
-                </div>
-            </div>
+            </nav>
             <AnimatePresence>
                 {
                     isOpen ? (
-                        <MobileNavbar navItem={navItem} handleOpenMenu={handleOpenMenu} />
+                        <MobileNavbar navItem={navItem} handleOpenMenu={handleOpenMenu} isOpen={isOpen} />
                     ) : (
                         null
                     )
                 }
             </AnimatePresence>
-
-        </nav>
+        </>
     )
 }

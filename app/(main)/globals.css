@@ -48,8 +48,8 @@
   width: 100%;
   
   animation: slideDown 3s ease-out forwards; 
-
-  z-index: 90;
+  backdrop-filter: none;
+  z-index: 100;
 
 }
 

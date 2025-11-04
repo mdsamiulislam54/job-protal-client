@@ -28,17 +28,19 @@ const Hero = () => {
         },
     ];
 
-    console.log(session?.user)
+  
 
     return (
         <div className=' min-h-screen flex flex-col justify-center items-center hero-gradient  max-sm:py-20 md:py-24   
         '
         >
-            <div className="custom-container md:space-y-14 space-y-8 flex flex-col justify-center items-center">
-                <p className='text-center syne text-sm sm:text-md font-bold'>Discover Jobs, Careers, and New Opportunities</p>
+            <div className="custom-container md:space-y-10 space-y-8 flex flex-col justify-center items-center">
+             <div>
+                   <p className='text-center syne text-sm sm:text-md font-bold mb-4'>Discover Jobs, Careers, and New Opportunities</p>
                 <h1 className="lg:text-5xl md:text-3xl text-2xl  font-extrabold text-center">
                     The Simplest Way to Land Your Dream Job
                 </h1>
+             </div>
 
                 <div className=" justify-center gap-10 mt-10 grid grid-cols-1 w-full sm:grid-cols-2 md:grid-cols-4">
                     {stats.map((item, index) => (

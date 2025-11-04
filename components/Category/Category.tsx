@@ -38,7 +38,7 @@ const Category = () => {
     return (
         <section className="py-16 bg-background-light dark:bg-background-dark">
             <div className="custom-container">
-                <h2 className="text-3xl font-bold text-center mb-8 syne">Explore Job Categories</h2>
+                <h2 className="text-3xl max-sm:text-xl font-bold text-center mb-8 syne">Explore Job Categories</h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6  mx-auto">
                     {categories.map((cat) => (
                         <div
