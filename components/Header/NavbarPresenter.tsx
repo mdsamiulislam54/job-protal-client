@@ -6,9 +6,11 @@ import { Button } from '../ui/button';
 import { ModeToggle } from '../ToggleMode/ToggleMode';
 import { Menu, X } from 'lucide-react';
 import MobileNavbar from './MobileNavbar';
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
+import ProfileDropDown from './ProfileDropDown';
+
 
 type Props = {
     navItem: NavItem[];
@@ -16,9 +18,11 @@ type Props = {
     isOpen: boolean;
     pathName: string;
     handleOpenMenu: () => void;
+    isDropDownMenu: boolean
+    handleDropDownMenu: () => void
 }
 
-export const NavbarPresenter = ({ scrollY, navItem, isOpen, pathName, handleOpenMenu }: Props) => {
+export const NavbarPresenter = ({ scrollY, navItem, isOpen, pathName, handleOpenMenu, isDropDownMenu, handleDropDownMenu }: Props) => {
     const { data: session } = useSession()
     return (
         <>
@@ -62,7 +66,7 @@ export const NavbarPresenter = ({ scrollY, navItem, isOpen, pathName, handleOpen
                                 </div>
                             ) : (
 
-                                <button onClick={() => signOut()}>
+                                <button onClick={handleDropDownMenu} >
                                     <Image src={session.user.image || ''} width={100} height={100} alt={session.user.name as string} className='w-10 h-10 rounded-full border-2 border-dotted border-primary flex justify-center items-center cursor-pointer' />
                                 </button>
 
@@ -79,10 +83,32 @@ export const NavbarPresenter = ({ scrollY, navItem, isOpen, pathName, handleOpen
 
 
             </nav>
+            {/* Responsive   menu */}
             <AnimatePresence>
                 {
                     isOpen ? (
                         <MobileNavbar navItem={navItem} handleOpenMenu={handleOpenMenu} isOpen={isOpen} />
+                    ) : (
+                        null
+                    )
+                }
+            </AnimatePresence>
+
+            {/* Profile DropDown menu */}
+            <AnimatePresence>
+                {
+                    isDropDownMenu ? (
+                        <motion.div
+                            initial={{ x: '100%', scale: 0.9 }}
+                            animate={{ x: 0, scale: 1 }}
+                            exit={{ x: '100%', scale: 0.9 }}
+                            transition={{ type: 'tween', duration: 0.3 }}
+                            className='fixed top-0 right-0 w-2/12 h-full z-999 bg-background p-4 '>
+                            <div className='w-full flex justify-end p-4'>
+                                <Button onClick={handleDropDownMenu}><X /></Button>
+                            </div>
+                            <ProfileDropDown />
+                        </motion.div>
                     ) : (
                         null
                     )

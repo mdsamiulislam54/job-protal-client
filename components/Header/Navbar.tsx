@@ -8,6 +8,7 @@ import { NavbarPresenter } from "./NavbarPresenter";
 const Navbar = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [openDropDownMenu, setOpenDropDownMenu] = useState(false)
   const pathName  = usePathname()
   useEffect(() => {
 
@@ -27,6 +28,9 @@ const Navbar = () => {
 const handleOpenMenu = () => {
   setIsOpen(!isOpen);
 }
+const handleOpenDropDownMenu = () => {
+ setOpenDropDownMenu(!openDropDownMenu)
+}
 
   return (
     <div>
@@ -34,6 +38,8 @@ const handleOpenMenu = () => {
         navItem={navItem}
         scrollY= {scrollY}
         isOpen = {isOpen}
+        isDropDownMenu = {openDropDownMenu}
+        handleDropDownMenu = {handleOpenDropDownMenu}
         handleOpenMenu={handleOpenMenu}
         pathName={pathName}
       />

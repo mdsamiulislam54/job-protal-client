@@ -4,14 +4,15 @@ import Link from 'next/link';
 import Logo from '../Logo/Logo';
 import { Button } from '../ui/button';
 import { motion } from "framer-motion";
-import { useEffect } from 'react';
+import { useSession } from 'next-auth/react';
+
 type Props = {
     navItem: NavItem[];
     handleOpenMenu: () => void;
     isOpen: boolean
 }
 const MobileNavbar = ({ navItem, handleOpenMenu, isOpen }: Props) => {
-  
+    const { data: session } = useSession()
 
     return (
         <motion.div
@@ -43,12 +44,20 @@ const MobileNavbar = ({ navItem, handleOpenMenu, isOpen }: Props) => {
                     )
                 }
 
-                <div className='flex flex-col gap-4 mt-4'>
-                    <Button children="Login" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne ' />
-                    <Button children="Registration" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne ' />
-                </div>
-            </div>
-        </motion.div>
+                {
+                    !session?.user ? <div className='flex gap-2'>
+                        <Link href="/auth/login" >
+                            <Button children="Login" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne hidden lg:block ' />
+                        </Link>
+                        <Link href={'/auth/register'}>
+                            <Button children="Registration" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne hidden lg:block ' />
+                        </Link>
+                    </div>
+                    :<div></div>
+                }
+
+            </div >
+        </motion.div >
     )
 }
 
