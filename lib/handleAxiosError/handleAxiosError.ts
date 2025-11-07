@@ -1,7 +1,5 @@
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";
-
-
 // Generic function to handle Axios errors
 export const handleAxiosError = (error: unknown) => {
   const err = error as AxiosError<{ message: string }>;

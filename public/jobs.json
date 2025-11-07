@@ -1,0 +1,26 @@
+[
+    {
+        "title": "",
+        "category":"",
+        "companyName": "",
+        "location": "",
+        "jobType": "",
+        "experienceLevel": "",
+        "WorkingHours":"",
+        "salaryRange": {
+            "min": 0,
+            "max": 0,
+            "currency": "BDT"
+        },
+        "skills":[],
+        "postedDate":"",
+        "deadline":"",
+        "aboutTheJob":"",
+        "JobDescription":"",
+        "Responsibilities":[], 
+        "requirements":[],
+        "benefits":[],
+        "companyLogo":[],
+        "contactEmail":""
+    }
+]

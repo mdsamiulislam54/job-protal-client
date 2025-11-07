@@ -23,8 +23,6 @@ const handler = NextAuth({
                 const user = res?.data?.newUser ?? res?.data
 
                 if (res?.status === 200) {
-                    console.log(user)
-                   
                     return {
                         id: user.id,
                         name: user.name,
@@ -39,8 +37,7 @@ const handler = NextAuth({
             },
 
 
-        })
-
+        }),
 
     ],
     pages: {

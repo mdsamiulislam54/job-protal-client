@@ -6,6 +6,9 @@ import { ThemeProvider } from "@/components/theme-provider/theme-provider";
 
 import Navbar from "@/components/Header/Navbar";
 import ToastProvider from "@/lib/Provider/ToastProvider/ToastProvider";
+import Footer from "@/components/Footer/Footer";
+import ReactQueryProvider from "@/lib/Provider/QueryClientProvider/QueryClientProvider";
+
 
 
 export const metadata: Metadata = {
@@ -26,21 +29,24 @@ export default function RootLayout({
         className={`antialiased geist`}
       >
         <SessionProvider>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-        
-        >
+          <ReactQueryProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
 
-          <header>
-            <Navbar />
-          </header>
-          <main>
-            {children}
-          </main>
-        <ToastProvider/>
-        </ThemeProvider>
+            >
+
+              <header>
+                <Navbar />
+              </header>
+              <main>
+                {children}
+              </main>
+              <Footer />
+              <ToastProvider />
+            </ThemeProvider>
+          </ReactQueryProvider>
         </SessionProvider>
       </body>
     </html>
