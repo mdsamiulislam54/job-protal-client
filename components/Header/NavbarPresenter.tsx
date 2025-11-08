@@ -26,8 +26,8 @@ export const NavbarPresenter = ({ scrollY, navItem, isOpen, pathName, handleOpen
     const { data: session } = useSession()
     return (
         <>
-            <nav className={`py-4 z-100 relative
-        ${scrollY > 0 ? "fixed-nav bg-background dark:bg-background-dark relative " : pathName === '/' ? " bg-transparent  absolute top-0 w-full" : "shadow-md dark:shadow-gray-800 bg-background-light dark:bg-background-dark  "}
+            <nav className={`py-4 z-100 
+        ${scrollY > 0 ? "fixed-nav bg-background dark:bg-background-dark relative shadow " : pathName === '/' ? " bg-transparent  absolute inset-0 w-full" : "shadow-md dark:shadow-gray-800 bg-background-light dark:bg-background-dark  "}
         
         `}>
                 <div className="px-4  flex justify-between items-center ">
