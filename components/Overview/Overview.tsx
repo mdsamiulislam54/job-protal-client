@@ -27,7 +27,7 @@ const Overview = () => {
     ]
 
     return (
-        <div className="py-16 bg-primary dark:bg-primary/20 mb-10">
+        <div className="py-16 bg-primary dark:bg-primary/20 mb-10 overview">
             <div className="custom-container">
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
