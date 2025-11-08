@@ -16,7 +16,7 @@ const LatestJobCard: React.FC<JobsType> = ({ job }) => {
     const { salaryRange, title, logo, deadline, jobType, location } = job
 
     return (
-        <div className='flex flex-col sm:flex-row justify-between items-center gap-6 shadow-md hover:shadow-lg rounded-box py-6 px-4 cursor-pointer bg-background dark:bg-gray-900 rounded-md transition-all duration-300'>
+        <div className='flex flex-col sm:flex-row justify-between items-center gap-6 shadow-md hover:shadow-lg rounded-box py-6 px-4 cursor-pointer bg-background dark:bg-background-dark dark:border border-gray-700 dark:shadow-gray-800  rounded-md transition-all duration-300'>
             
             {/* Left Section */}
             <div className='flex items-center gap-4 w-full sm:w-2/3'>

@@ -18,14 +18,14 @@ const Testimonial = () => {
             animate={{ x: ["0%", "-50%"] }}
             transition={{
               ease: "linear",
-              duration: 20, 
+              duration: 30, 
               repeat: Infinity,
             }}
           >
             {[...testimonialsData, ...testimonialsData].map((feedback, index) => (
               <div
                 key={index}
-                className="w-[400px] h-[350px] bg-white dark:bg-gray-900 shadow-lg rounded-2xl p-6 flex-shrink-0"
+                className="w-[400px] h-[350px] bg-white dark:bg-background-dark dark:border border-gray-700 dark:shadow-gray-800 shadow-lg rounded-2xl p-6 shrink-0"
               >
                 <div className="flex justify-center items-center mb-2">
                   <Image
