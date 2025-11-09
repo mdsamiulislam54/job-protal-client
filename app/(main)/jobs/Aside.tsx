@@ -8,7 +8,31 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Search, MapPin, DollarSign } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-const Aside = () => {
+type FilterType = {
+    search: string;
+    location: string;
+    category: string;
+    min: number;
+    max: number;
+}
+
+type AsideProps = {
+    uniqueCategory: string[]
+    uniqueLocation: string[]
+    onUpdateFilter: (value: FilterType | ((prev: FilterType) => FilterType)) => void
+
+}
+
+const Aside: React.FC<AsideProps> = ({ onUpdateFilter, uniqueCategory, uniqueLocation }) => {
+
+
+    const salaryRanges = [
+        "5000-15000",
+        "15000-25000",
+        "25000-40000",
+        "40000-60000",
+    ]
+
     return (
         <aside className=" p-4 space-y-2 ">
             {/*  Search Box */}
@@ -17,7 +41,15 @@ const Aside = () => {
                     <Label htmlFor="search" className="text-sm font-semibold ">Search Job</Label>
                     <div className="relative">
                         <Search className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                        <Input id="search" placeholder="Search by Job title..." className="pl-10" />
+                        <Input
+                            id="search"
+                            placeholder="Search by Job title..."
+                            className="pl-10"
+                            onChange={(e) => onUpdateFilter((prev) => ({
+                                ...prev,
+                                search: e.target.value
+                            }))}
+                        />
                     </div>
                 </CardContent>
                 {/*  Location Select */}
@@ -25,15 +57,25 @@ const Aside = () => {
                     <Label className="text-sm font-semibold  flex items-center gap-1">
                         <MapPin className="w-4 h-4" /> Location
                     </Label>
-                    <Select >
-                        <SelectTrigger className="w-full">
-                            <SelectValue placeholder="Select location" className="" />
+                    <Select
+
+                        onValueChange={(val) => onUpdateFilter((prev) => ({
+                            ...prev,
+                            location: val
+                        }))}
+                    >
+                        <SelectTrigger
+
+                            className="w-full">
+                            <SelectValue
+
+                                placeholder="Select location" className="" />
                         </SelectTrigger>
                         <SelectContent className="dark:bg-background-dark bg-background">
-                            <SelectItem value="dhaka">Dhaka</SelectItem>
-                            <SelectItem value="chattogram">Chattogram</SelectItem>
-                            <SelectItem value="rajshahi">Rajshahi</SelectItem>
-                            <SelectItem value="khulna">Khulna</SelectItem>
+
+                            {
+                                uniqueLocation?.map((locate) => <SelectItem key={locate} value={locate}>{locate}</SelectItem>)
+                            }
                         </SelectContent>
                     </Select>
                 </CardContent>
@@ -42,29 +84,68 @@ const Aside = () => {
                     <Label className="text-sm font-semibold  flex items-center gap-1">
                         <DollarSign className="w-4 h-4" /> Salary Range
                     </Label>
-                    <div className="grid grid-cols-2 gap-3">
-                        <Input placeholder="Min" type="number" />
-                        <Input placeholder="Max" type="number" />
-                    </div>
+                    <Select
+
+                        onValueChange={(val) => {
+                            const [min, max] = val.split("-").map(Number)
+                            onUpdateFilter((prev) => ({
+                                ...prev,
+                                min: min,
+                                max: max,
+                            }))
+
+                        }}
+                    >
+                        <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Select salary range" />
+                        </SelectTrigger>
+                        <SelectContent className="dark:bg-background-dark bg-background">
+                            {salaryRanges.map((range) => (
+                                <SelectItem key={range} value={range}>
+                                    ৳ {range}
+                                </SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
                 </CardContent>
                 {/*  Category List */}
                 <CardContent className="p-4 space-y-3">
                     <Label className="text-xl syne font-semibold ">Job Categories</Label>
                     <ul className="space-y-2 text-sm">
-                        <li className="hover:text-primary cursor-pointer transition">Frontend Developer</li>
-                        <li className="hover:text-primary cursor-pointer transition">Backend Developer</li>
-                        <li className="hover:text-primary cursor-pointer transition">Full Stack Developer</li>
-                        <li className="hover:text-primary cursor-pointer transition">UI/UX Designer</li>
-                        <li className="hover:text-primary cursor-pointer transition">Mobile App Developer</li>
-                        <li className="hover:text-primary cursor-pointer transition">DevOps Engineer</li>
+                        {
+                            uniqueCategory.map((cat) => <li
+                                onClick={() => onUpdateFilter((prev) => ({
+                                    ...prev,
+                                    category: cat
+                                }))}
+                                key={cat}
+                                className="hover:text-primary cursor-pointer transition">{cat}</li>)
+                        }
+
+
                     </ul>
                 </CardContent>
             </Card>
 
 
-            <Button className="w-full">
+            <Button
+                className="w-full"
+                onClick={() => {
+                    onUpdateFilter((prev) => ({
+                        ...prev,
+                        search: "",
+                        location: "",
+                        min: 0,
+                        max: 0,
+                        category: "",
+                    }));
+                }}
+            >
                 Reset Filter
             </Button>
+
+
+
         </aside>
     )
 }

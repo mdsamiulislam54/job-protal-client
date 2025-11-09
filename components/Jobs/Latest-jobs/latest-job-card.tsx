@@ -20,7 +20,7 @@ const LatestJobCard: React.FC<JobsType> = ({ job }) => {
 
             {/* Left Section */}
             <div className='flex items-center gap-4 w-full sm:w-2/3'>
-                <div className='flex-shrink-0'>
+                <div className='shrink-0'>
                     <Image
                         src={logo || "https://img.freepik.com/free-vector/bird-colorful-gradient-design-vector_343694-2506.jpg?semt=ais_hybrid&w=740&q=80"}
                         alt={title}
