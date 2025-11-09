@@ -34,7 +34,7 @@ const Aside: React.FC<AsideProps> = ({ onUpdateFilter, uniqueCategory, uniqueLoc
     ]
 
     return (
-        <aside className=" p-4 space-y-2 ">
+        <aside className="  space-y-2  ">
             {/*  Search Box */}
             <Card className="shadow-none border-none">
                 <CardContent className="p-4 space-y-2">

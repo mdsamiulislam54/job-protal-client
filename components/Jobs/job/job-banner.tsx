@@ -9,7 +9,7 @@ const JobBanner = () => {
             }}
         >
             {/* Overlay for better text readability */}
-            <div className="absolute inset-0 bg-primary/90"></div>
+            <div className="absolute inset-0 bg-primary/90 dark:bg-background-dark/90"></div>
             <div className="custom-container  ">
                 <div className="max-w-3xl pt-24  relative z-10 h-full  text-white px-4 flex flex-col gap-4   ">
                     <p className="text-sm uppercase tracking-wide syne ">

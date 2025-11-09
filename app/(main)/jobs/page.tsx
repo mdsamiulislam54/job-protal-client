@@ -23,13 +23,13 @@ const JobPage = () => {
 
     queryFn: async () => {
       const query = encodeURIComponent(JSON.stringify(filterData));
-      const res = await api.get(`/all-jobs?page=${currentPage}&limit=${5}&filter=${query}`, {
-       headers: { 'Cache-Control': 'no-cache' }
+      const res = await api.get(`/all-jobs?page=${currentPage}&limit=${4}&filter=${query}`, {
+        headers: { 'Cache-Control': 'no-cache' }
       });
       return res?.data
     },
     staleTime: 0,
-    
+
     refetchOnWindowFocus: false,
 
   })
@@ -45,13 +45,13 @@ const JobPage = () => {
     <div className='min-h-screen '>
       <JobBanner />
       <div className="custom-container my-10">
-        <div className='grid grid-cols-12 gap-10'>
-          <div className='md:col-span-4 min-h-screen'>
+        <div className='grid md:grid-cols-12 gap-10'>
+          <div className='md:col-span-4 border-r pr-2 dark:border-gray-600 border-gray-300 shadow '>
             <Aside uniqueCategory={uniqueCategory} uniqueLocation={uniqueLocation} onUpdateFilter={setFilterData} />
           </div>
-          <div className='md:col-span-8 min-h-screen'>
+          <div className='md:col-span-8 min-h-screen space-y-5'>
 
-            <div className='grid grid-cols-1 gap-4'>
+            
 
               {isLoading && <Loading />}
               {error && (
@@ -66,7 +66,7 @@ const JobPage = () => {
 
 
               }
-            </div>
+          
 
           </div>
         </div>
