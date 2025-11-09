@@ -118,37 +118,37 @@ const JobPostPage = () => {
                         {/* --- Job Details --- */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div>
-  <label className="font-semibold mb-1 block">Job Type</label>
-  <select 
-    {...register("jobType", { required: "Job type is required" })} 
-    className="border-2 w-full p-2 rounded-md border-gray-400"
-  >
-    <option value="">Select job type</option>
-    <option value="full-time">Full-time</option>
-    <option value="part-time">Part-time</option>
-    <option value="contract">Contract</option>
-    <option value="freelance">Freelance</option>
-    <option value="internship">Internship</option>
-    <option value="remote">Remote</option>
-  </select>
-  {errors.jobType && <p className="text-red-600 text-sm mt-1">{errors.jobType.message}</p>}
-</div>
+                                <label className="font-semibold mb-1 block">Job Type</label>
+                                <select 
+                                    {...register("jobType", { required: "Job type is required" })} 
+                                    className="border-2 w-full p-2 rounded-md border-gray-400"
+                                >
+                                    <option value="">Select job type</option>
+                                    <option value="full-time">Full-time</option>
+                                    <option value="part-time">Part-time</option>
+                                    <option value="contract">Contract</option>
+                                    <option value="freelance">Freelance</option>
+                                    <option value="internship">Internship</option>
+                                    <option value="remote">Remote</option>
+                                </select>
+                                {errors.jobType && <p className="text-red-600 text-sm mt-1">{errors.jobType.message}</p>}
+                                </div>
 
-                          <div>
-  <label className="font-semibold mb-1 block">Experience Level</label>
-  <select 
-    {...register("experienceLevel", { required: "Experience level is required" })} 
-    className="border-2 w-full p-2 rounded-md border-gray-400"
-  >
-    <option value="">Select experience level</option>
-    <option value="entry-level">Entry Level</option>
-    <option value="mid-level">Mid Level</option>
-    <option value="senior-level">Senior Level</option>
-    <option value="lead">Lead</option>
-    <option value="principal">Principal</option>
-  </select>
-  {errors.experienceLevel && <p className="text-red-600 text-sm mt-1">{errors.experienceLevel.message}</p>}
-</div>
+                                                        <div>
+                                <label className="font-semibold mb-1 block">Experience Level</label>
+                                <select 
+                                    {...register("experienceLevel", { required: "Experience level is required" })} 
+                                    className="border-2 w-full p-2 rounded-md border-gray-400"
+                                >
+                                    <option value="">Select experience level</option>
+                                    <option value="entry-level">Entry Level</option>
+                                    <option value="mid-level">Mid Level</option>
+                                    <option value="senior-level">Senior Level</option>
+                                    <option value="lead">Lead</option>
+                                    <option value="principal">Principal</option>
+                                </select>
+                                {errors.experienceLevel && <p className="text-red-600 text-sm mt-1">{errors.experienceLevel.message}</p>}
+                                </div>
 
                             <div>
                                 <label className="font-semibold mb-1 block">Working Hours</label>
@@ -241,7 +241,7 @@ const JobPostPage = () => {
                                 <label className="font-semibold mb-1 block">Contact Email</label>
                                 <Input
                                     type="email"
-                                      value={user.email}
+                                      value={user?.email}
                                     {...register("contactEmail", {
                                       
                                         required: "Contact Email is required",

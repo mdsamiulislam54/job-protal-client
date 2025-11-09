@@ -12,6 +12,11 @@
   --color-text-dark: #ffffff;
 }
 
+/* scroll smooth */
+html{
+  scroll-behavior: smooth;
+}
+
 /* hybrid fallback system */
 :root {
   --primary: var(--color-primary);
