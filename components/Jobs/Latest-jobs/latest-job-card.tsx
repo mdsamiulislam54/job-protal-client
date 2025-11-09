@@ -1,7 +1,7 @@
 "use client"
 import { Button } from '@/components/ui/button'
 import { JobFormType } from '@/types/jobTypes'
-import { Clock8, MapPin } from 'lucide-react'
+import { Apple, Clock8, MapPin } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 import { format } from "date-fns";
@@ -17,12 +17,12 @@ const LatestJobCard: React.FC<JobsType> = ({ job }) => {
 
     return (
         <div className='flex flex-col sm:flex-row justify-between items-center gap-6 shadow-md hover:shadow-lg rounded-box py-6 px-4 cursor-pointer bg-background dark:bg-background-dark dark:border border-gray-700 dark:shadow-gray-800  rounded-md transition-all duration-300'>
-            
+
             {/* Left Section */}
             <div className='flex items-center gap-4 w-full sm:w-2/3'>
                 <div className='flex-shrink-0'>
                     <Image
-                        src={logo}
+                        src={logo || "https://img.freepik.com/free-vector/bird-colorful-gradient-design-vector_343694-2506.jpg?semt=ais_hybrid&w=740&q=80"}
                         alt={title}
                         width={100}
                         height={100}
