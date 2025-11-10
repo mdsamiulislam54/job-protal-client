@@ -7,13 +7,14 @@ import React from 'react'
 import { format } from "date-fns";
 import { TbJewishStarFilled } from "react-icons/tb";
 import { MdArrowOutward } from "react-icons/md";
+import Link from 'next/link'
 
 type JobsType = {
     job: JobFormType
 }
 
 const LatestJobCard: React.FC<JobsType> = ({ job }) => {
-    const { salaryRange, title, logo, deadline, jobType, location } = job
+    const { salaryRange, title, logo, deadline, jobType, location ,_id} = job
 
     return (
         <div className='flex flex-col sm:flex-row justify-between items-center gap-6 shadow-md hover:shadow-lg rounded-box py-6 px-4 cursor-pointer bg-background dark:bg-background-dark dark:border border-gray-700 dark:shadow-gray-800  rounded-md transition-all duration-300'>
@@ -51,9 +52,9 @@ const LatestJobCard: React.FC<JobsType> = ({ job }) => {
                 <div className='flex sm:flex-col flex-col-reverse items-start sm:items-end gap-2 sm:gap-3 mt-3 sm:mt-0'>
                     <Button className='w-full sm:w-auto'>Apply</Button>
                     <p className='text-xs sm:text-sm'><span className='font-medium'>Deadline:</span> {format(new Date(deadline), 'dd MMM yyyy')}</p>
-                    <button className='flex items-center shadow dark:shadow-gray-600 gap-2 p-1 text-sm sm:text-base syne rounded-box cursor-pointer hover:text-primary transition-all duration-300'>
+                    <Link href={`/job/${_id}`} className='flex items-center shadow dark:shadow-gray-600 gap-2 p-1 text-sm sm:text-base syne rounded-box cursor-pointer hover:text-primary transition-all duration-300'>
                         Details <MdArrowOutward />
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>
