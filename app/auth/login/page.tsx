@@ -78,8 +78,8 @@ const LoginPage = () => {
 
 
     return (
-        <div className="grid grid-cols-3 min-h-screen">
-            <div className="col-span-2 relative">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 sm:min-h-screen">
+            <div className="lg:col-span-2 relative md:block hidden">
                 <Image src={"https://img.freepik.com/free-photo/group-young-businesspeople-working-workplace_23-2147826626.jpg?t=st=1762754818~exp=1762758418~hmac=12727ab40bc2afc1c90d33039672507c2a7a7c0f04b5337141ffc5cdef04795a&w=740"} width={600} height={600} alt="images for login page office meting"
                     className="w-full h-full object-cover"
                 />
@@ -92,7 +92,7 @@ const LoginPage = () => {
                     </div>
                 </div>
             </div>
-            <div className="shadow  col-span-1  ">
+            <div className="lg:col-span-1  h-full">
                 <form onSubmit={handleLogin} className="  dark:shadow-purple-900 px-4 py-10 rounded-lg">
                     <div className="space-y-7">
                         <div className="flex flex-col justify-center items-center gap-2 space-y-4">
