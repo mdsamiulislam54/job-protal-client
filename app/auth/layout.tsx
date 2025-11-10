@@ -11,16 +11,16 @@ export default function DashboardLayout({
 }) {
     return (
         <html lang="en">
-            <body className="hero-gradient custom-container min-h-screen" >
+            <body className="hero-gradient  min-h-screen" >
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"
                     enableSystem
                     disableTransitionOnChange
                 />
-                <div className="mt-10 container-custom">
+                {/* <div className="container-custom">
                     <BackButton />
-                </div>
+                </div> */}
                 <main>{children}</main>
                 <ToastProvider />
             </body>
