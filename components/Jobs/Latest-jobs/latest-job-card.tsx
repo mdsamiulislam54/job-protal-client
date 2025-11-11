@@ -50,7 +50,7 @@ const LatestJobCard: React.FC<JobsType> = ({ job }) => {
                 </div>
 
                 <div className='flex sm:flex-col flex-col-reverse items-start sm:items-end gap-2 sm:gap-3 mt-3 sm:mt-0'>
-                    <Button className='w-full sm:w-auto'>Apply</Button>
+                    <Link href={`/job/${_id}`}><Button className='w-full sm:w-auto'>Apply</Button></Link>
                     <p className='text-xs sm:text-sm'><span className='font-medium'>Deadline:</span> {format(new Date(deadline), 'dd MMM yyyy')}</p>
                     <Link href={`/job/${_id}`} className='flex items-center shadow dark:shadow-gray-600 gap-2 p-1 text-sm sm:text-base syne rounded-box cursor-pointer hover:text-primary transition-all duration-300'>
                         Details <MdArrowOutward />
