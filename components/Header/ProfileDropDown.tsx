@@ -12,18 +12,23 @@ import {
   LayoutDashboard,
   LogOut
 } from "lucide-react"
+import { MdApproval } from "react-icons/md"
 
 const ProfileDropDown = () => {
   const { user } = useAuth();
 
   return (
-    <ul className="space-y-4 syne">
+    <ul className="space-y-4 syne  p-2">
       {/* ----- User Role ----- */}
       {user?.role?.includes("user") && (
         <>
           <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
             <User size={18} />
             <Link href="/profile">My Profile</Link>
+          </li>
+          <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+            <MdApproval size={18} />
+            <Link href="/user/application">My Application</Link>
           </li>
         </>
       )}

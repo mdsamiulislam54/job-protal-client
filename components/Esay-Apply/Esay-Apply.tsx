@@ -6,26 +6,38 @@ import React, { useState, ChangeEvent } from "react"
 import { Label } from "@radix-ui/react-dropdown-menu"
 import { Input } from "../ui/input"
 import { useAuth } from "@/hook/UserHook/useAuth"
+import api from "@/lib/api/axios"
+import { toast } from "react-toastify"
+import { handleAxiosError } from "@/lib/handleAxiosError/handleAxiosError"
+import { useRouter } from "next/navigation"
 
 type EasyApplyProps = {
     onHandleIsOpen: () => void
     applicationId: string
     employeeEmail: string
+    title: string
+    companyName: string
+
 }
 
-const EasyApply: React.FC<EasyApplyProps> = ({ onHandleIsOpen, applicationId, employeeEmail }) => {
+const EasyApply: React.FC<EasyApplyProps> = ({ onHandleIsOpen, applicationId, employeeEmail, companyName, title }) => {
     const { user } = useAuth()
+    const router = useRouter()
 
     const [formData, setFormData] = useState({
         name: user?.name || "",
         email: user?.email || "",
         contactNumber: "",
-        github: "",
-        linkedin: "",
-        resume: "",
+        github: "https://github.com/mdsamiulislam54",
+        linkedin: "https://www.linkedin.com/in/mdshamiulislam-dev/",
+        resume: "https://drive.google.com/file/d/1i68eoEhG9hVO51ngDR8QLT3wGUmf5I_J/view?usp=drive_link",
         question: "",
         applicationId,
-        employeeEmail
+        employeeEmail,
+        companyName,
+        title,
+        status: "Pending",
+
     })
 
 
@@ -34,8 +46,22 @@ const EasyApply: React.FC<EasyApplyProps> = ({ onHandleIsOpen, applicationId, em
         setFormData((prev) => ({ ...prev, [name]: value }))
     }
 
-    const handleApply = () => {
-        console.log(formData)
+    const handleApply = async () => {
+
+        try {
+            const res = await api.post(`/application`, formData);
+            if (res.status === 200) {
+                toast.success('Your Apply Successfully!', {
+                    onClose: () => {
+                        router.push('/user/application')
+                    }
+                })
+            }
+
+        } catch (error) {
+            handleAxiosError(error)
+        }
+
     }
 
     return (

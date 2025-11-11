@@ -180,7 +180,7 @@ const JobDetails = ({ params }: { params: Promise<{ id: string }> }) => {
 
       {
         isOpen && <div className='fixed inset-0 bg-black/70  flex justify-center items-center z-999'>
-            <EasyApply onHandleIsOpen={handleIsOpen} applicationId={_id} employeeEmail={contactEmail}/>
+            <EasyApply onHandleIsOpen={handleIsOpen} applicationId={_id} employeeEmail={contactEmail} title={title} companyName={companyName}/>
         </div>
       }
     </div>
