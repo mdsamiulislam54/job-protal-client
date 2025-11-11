@@ -1,5 +1,5 @@
 "use client"
-import { use } from 'react'
+import { use, useState } from 'react'
 import Loading from "@/components/Loading/Loading"
 import { Button } from "@/components/ui/button"
 import api from "@/lib/api/axios"
@@ -8,9 +8,11 @@ import Image from "next/image"
 import { toast } from "react-toastify"
 import { format } from "date-fns"
 import NoticeCard from '@/components/NoticeCard/NoticeCard'
+import EasyApply from '@/components/Esay-Apply/Esay-Apply'
 
 const JobDetails = ({ params }: { params: Promise<{ id: string }> }) => {
-  const { id } = use(params)
+  const { id } = use(params);
+  const [isOpen, setOpen] = useState(false)
 
   const {
     data: job,
@@ -57,7 +59,12 @@ const JobDetails = ({ params }: { params: Promise<{ id: string }> }) => {
     companyLogo,
     contactEmail,
     contactMessage,
+    _id
   } = job
+
+  const handleIsOpen = () => {
+    setOpen(!isOpen)
+  }
 
   return (
     <div className="min-h-screen  py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
@@ -84,7 +91,7 @@ const JobDetails = ({ params }: { params: Promise<{ id: string }> }) => {
           </div>
           {/* apply section -- & deadline */}
           <div className="flex flex-col items-end gap-2">
-            <Button className="w-full sm:w-auto">Easy Apply</Button>
+            <Button onClick={handleIsOpen} className="w-full sm:w-auto">Easy Apply</Button>
             <p className="text-sm text-gray-500 dark:text-gray-300">
               Deadline: {format(new Date(deadline), "dd MMM yyyy")}
             </p>
@@ -169,7 +176,13 @@ const JobDetails = ({ params }: { params: Promise<{ id: string }> }) => {
           </p>
         </div>
       </div>
-      <NoticeCard/>
+      <NoticeCard />
+
+      {
+        isOpen && <div className='fixed inset-0 bg-black/70  flex justify-center items-center z-999'>
+            <EasyApply onHandleIsOpen={handleIsOpen} applicationId={_id} employeeEmail={contactEmail}/>
+        </div>
+      }
     </div>
   )
 }
