@@ -66,6 +66,7 @@ const LoginPage = () => {
         if (res?.error) {
             handleAxiosError(res.error);
         } else {
+            console.log("Login successfully")
             toast.success("Login Successfully!", {
                 onClose: () => {
                     router.push(callbackUrl || '/')
