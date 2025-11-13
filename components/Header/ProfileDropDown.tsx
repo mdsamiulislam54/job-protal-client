@@ -22,10 +22,10 @@ const ProfileDropDown = () => {
       {/* ----- User Role ----- */}
       {user?.role?.includes("user") && (
         <>
-          <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+          {/* <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
             <User size={18} />
             <Link href="/profile">My Profile</Link>
-          </li>
+          </li> */}
           <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
             <MdApproval size={18} />
             <Link href="/user/application">My Application</Link>
@@ -36,21 +36,21 @@ const ProfileDropDown = () => {
       {/* ----- Employee Role ----- */}
       {user?.role?.includes("employee") && (
         <>
-          <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+          {/* <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
             <Settings size={18} />
             <Link href="/settings">View Profile</Link>
-          </li>
+          </li> */}
           <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
             <PlusCircle size={18} />
             <Link href="/job-post">Post New Job</Link>
           </li>
           <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
             <FileText size={18} />
-            <Link href="/applications">Application List</Link>
+            <Link href="employee/applications">Application List</Link>
           </li>
           <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
             <Briefcase size={18} />
-            <Link href="/my-jobs">My Jobs Post</Link>
+            <Link href="/employee/my_applications">My Jobs Post</Link>
           </li>
         </>
       )}
@@ -66,7 +66,7 @@ const ProfileDropDown = () => {
       )}
 
       {/* ----- Logout ----- */}
-      <li className="flex items-center gap-2 text-red-600 hover:text-red-700 transition-colors">
+      <li className="flex items-center gap-2 text-red-600 hover:text-red-700 transition-colors cursor-pointer">
         <LogOut size={18} />
         <button onClick={() => signOut()}>Logout</button>
       </li>

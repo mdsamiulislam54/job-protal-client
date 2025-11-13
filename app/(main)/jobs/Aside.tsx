@@ -14,6 +14,7 @@ type FilterType = {
     category: string;
     min: number;
     max: number;
+    job_type:string
 }
 
 type AsideProps = {
@@ -34,7 +35,7 @@ const Aside: React.FC<AsideProps> = ({ onUpdateFilter, uniqueCategory, uniqueLoc
     ]
 
     return (
-        <aside className="  space-y-2  ">
+        <aside className="  space-y-2 pb-4 ">
             {/*  Search Box */}
             <Card className="shadow-none border-none">
                 <CardContent className="p-4 space-y-2">
@@ -82,7 +83,7 @@ const Aside: React.FC<AsideProps> = ({ onUpdateFilter, uniqueCategory, uniqueLoc
                 {/*  Salary Range */}
                 <CardContent className="p-4 space-y-2">
                     <Label className="text-sm font-semibold  flex items-center gap-1">
-                        <DollarSign className="w-4 h-4" /> Salary Range
+                        ৳ Salary Range
                     </Label>
                     <Select
 
@@ -107,6 +108,39 @@ const Aside: React.FC<AsideProps> = ({ onUpdateFilter, uniqueCategory, uniqueLoc
                             ))}
                         </SelectContent>
                     </Select>
+
+
+                </CardContent>
+                {/* job type */}
+                <CardContent className="p-4 space-y-2">
+                    <Label className="text-sm font-semibold  flex items-center gap-1">
+                        Job Type
+                    </Label>
+                    <Select
+
+                        onValueChange={(val) => {
+                           
+                            onUpdateFilter((prev) => ({
+                                ...prev,
+                               job_type:val
+                            }))
+
+                        }}
+                    >
+                        <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Select salary range" />
+                        </SelectTrigger>
+                        <SelectContent className="dark:bg-background-dark bg-background">
+                           
+                                <SelectItem  value='all'>All</SelectItem>
+                                <SelectItem  value='part-time'>Part - Time</SelectItem>
+                                <SelectItem  value='full-time'>Full - Time</SelectItem>
+                                <SelectItem  value='remote'>Remote</SelectItem>
+                          
+                        </SelectContent>
+                    </Select>
+
+
                 </CardContent>
                 {/*  Category List */}
                 <CardContent className="p-4 space-y-3">
@@ -129,7 +163,7 @@ const Aside: React.FC<AsideProps> = ({ onUpdateFilter, uniqueCategory, uniqueLoc
 
 
             <Button
-                className="w-full"
+                className="w-full mx-auto ml-1"
                 onClick={() => {
                     onUpdateFilter((prev) => ({
                         ...prev,

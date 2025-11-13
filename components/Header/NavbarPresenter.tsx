@@ -103,7 +103,7 @@ export const NavbarPresenter = ({ scrollY, navItem, isOpen, pathName, handleOpen
                             animate={{ x: 0, scale: 1 }}
                             exit={{ x: '100%', scale: 0.9 }}
                             transition={{ type: 'tween', duration: 0.3 }}
-                            className='fixed top-[72px] shadow-2xl right-0 w-2/12 h-full z-999 bg-background dark:bg-background-dark dark:border-l-2 border-gray-700 p-4 '>
+                            className='fixed top-[72px] shadow-2xl right-0 w-2/12  z-999 bg-background dark:bg-background-dark dark:border-l-2 border-gray-700 p-4 '>
                             {/* <div className='w-full flex justify-end p-4'>
                                 <Button onClick={handleDropDownMenu}><X /></Button>
                             </div> */}

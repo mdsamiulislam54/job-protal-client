@@ -8,6 +8,7 @@ import Pagination from '@/components/Pagination/Pagination'
 import LatestJobCard from '@/components/Jobs/Latest-jobs/latest-job-card'
 import { JobFormType } from '@/types/jobTypes'
 import Loading from '@/components/Loading/Loading'
+import { Button } from '@/components/ui/button'
 
 const JobPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,7 +17,8 @@ const JobPage = () => {
     location: '',
     category: '',
     min: 0,
-    max: 0
+    max: 0,
+    job_type: 'all'
   })
   const { data, error, isLoading } = useQuery({
     queryKey: ["all-jobs", currentPage, filterData],
@@ -39,7 +41,7 @@ const JobPage = () => {
   const uniqueCategory = data?.uniqueCategory || []
   const uniqueLocation = data?.uniqueLocation || []
 
-  console.log(data)
+
 
   return (
     <div className='min-h-screen '>
@@ -51,22 +53,44 @@ const JobPage = () => {
           </div>
           <div className='md:col-span-8 min-h-screen space-y-5'>
 
-            
-
-              {isLoading && <Loading />}
-              {error && (
-                <p className="text-red-500 font-semibold text-center">
-                  {(error as any)?.message || "Something went wrong!"}
-                </p>
-              )}
-              {
 
 
-                jobs.map((job: JobFormType) => <LatestJobCard key={job._id} job={job} />)
+            {isLoading && <Loading />}
+            {error && (
+              <p className="text-red-500 font-semibold text-center">
+                {(error as any)?.message || "Something went wrong!"}
+              </p>
+            )}
+
+            {
+              jobs.length === 0 && <div className='flex flex-col justify-center items-center h-full space-y-4'>
+                <p className='syne text-sm'>Jobs Not Found</p>
+                <Button
+                  className=" "
+                  onClick={() => {
+                    setFilterData((prev) => ({
+                      ...prev,
+                      search: "",
+                      location: "",
+                      min: 0,
+                      max: 0,
+                      category: "",
+                      job_type:'all'
+                    }));
+                  }}
+                >
+                  Reset Filter
+                </Button>
+              </div>
+            }
+            {
 
 
-              }
-          
+              jobs.map((job: JobFormType) => <LatestJobCard key={job._id} job={job} />)
+
+
+            }
+
 
           </div>
         </div>
