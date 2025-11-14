@@ -88,7 +88,7 @@ const Application = () => {
                                 </TableCell>
                             </TableRow>
                         ) : (
-                            applications?.map((app: ApplicationType) => (
+                            applications.map((app: ApplicationType) => (
                                 <TableRow key={app._id} className="">
                                     <TableCell className="font-medium">{app.title}</TableCell>
                                     <TableCell>{app.companyName}</TableCell>

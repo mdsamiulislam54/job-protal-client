@@ -77,7 +77,7 @@ const EmployeeApplicationList = () => {
     return (
         <div className="min-h-screen bg-gray-100 dark:bg-background-dark py-10">
 
-            <div className="custom-container overflow-x-auto bg-background dark:bg-background-dark dark:border border-gray-700 p-4 min-h-screen rounded-md">
+                <div className="custom-container overflow-x-auto bg-background dark:bg-background-dark dark:border border-gray-700 p-4 min-h-screen rounded-md">
                 <Table className="min-w-full shadow ">
                     <TableCaption className="text-sm text-gray-500 dark:text-gray-400">
                         Your Application List
@@ -157,7 +157,7 @@ const EmployeeApplicationList = () => {
                         )}
                     </TableBody>
                 </Table>
-            </div>
+                 </div>
         </div >
     )
 }

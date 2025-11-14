@@ -57,7 +57,7 @@ const Myjobs = () => {
 
         if (result.isConfirmed) {
             try {
-                await api.delete(`/application/${id}`)
+                await api.delete(`/employee/job/${id}`)
                 toast.success("Your application has been cancelled.")
 
                 // refetch user application data
@@ -147,6 +147,7 @@ const Myjobs = () => {
                                     </TableCell>
                                     <TableCell>{job.postedDate}</TableCell>
                                     <TableCell>{job.deadline}</TableCell>
+                                 
                                     <TableCell>
                                         ৳ {
                                             job.salaryRange.min
@@ -170,6 +171,7 @@ const Myjobs = () => {
 
             <Pagination currentPage={currentPage} onPageChange={setCurrentPage} totalPages={total} />
         </div >
+        
     )
 }
 
