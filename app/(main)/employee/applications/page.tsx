@@ -17,16 +17,19 @@ import { ApplicationType } from "@/types/applicationType"
 import { Button } from "@/components/ui/button"
 import { handleAxiosError } from "@/lib/handleAxiosError/handleAxiosError"
 import { toast } from "react-toastify"
+import { useState } from "react"
+import Pagination from "@/components/Pagination/Pagination"
 
 const EmployeeApplicationList = () => {
     const { user } = useAuth()
-
+    const [currentPage , setCurrentPage] = useState(1);
+    const [total, setTotal] = useState(0);
     const { data: applications, isError, isLoading, refetch } = useQuery({
-        queryKey: ['employee-application', user?.email],
+        queryKey: ['employee-application', user?.email, currentPage],
         queryFn: async () => {
             if (!user?.email) return []
-            const res = await api.get(`/employee/jobs/list/${user.email}`);
-            console.log(res.data)
+            const res = await api.get(`/employee/jobs/list/${user.email}?page=${currentPage}&limit=${10}`);
+            setTotal(res.data.total)
             return res.data.jobs || []
         },
         enabled: !!user?.email
@@ -73,11 +76,12 @@ const EmployeeApplicationList = () => {
         }
     };
 
+  
 
     return (
         <div className="min-h-screen bg-gray-100 dark:bg-background-dark py-10">
 
-                <div className="custom-container overflow-x-auto bg-background dark:bg-background-dark dark:border border-gray-700 p-4 min-h-screen rounded-md">
+                <div className="custom-container overflow-x-auto bg-background dark:bg-background-dark dark:border border-gray-700 p-4 rounded-md">
                 <Table className="min-w-full shadow ">
                     <TableCaption className="text-sm text-gray-500 dark:text-gray-400">
                         Your Application List
@@ -85,7 +89,8 @@ const EmployeeApplicationList = () => {
                     <TableHeader>
                         <TableRow>
                             <TableHead>Job Title</TableHead>
-                            <TableHead>Company</TableHead>
+                            <TableHead>Candidate Name</TableHead>
+                            <TableHead>Candidate Email</TableHead>
                             <TableHead>Status</TableHead>
                             <TableHead>Applied Date</TableHead>
                             <TableHead className="text-center">Resume</TableHead>
@@ -105,7 +110,8 @@ const EmployeeApplicationList = () => {
                             applications?.map((app: ApplicationType) => (
                                 <TableRow key={app._id} className="">
                                     <TableCell className="font-medium">{app.title}</TableCell>
-                                    <TableCell>{app.companyName}</TableCell>
+                                    <TableCell>{app.name}</TableCell>
+                                    <TableCell>{app.email}</TableCell>
                                     <TableCell>
                                         <span className={`px-2 py-1 rounded-full text-sm ${app.status === 'Pending'
                                             ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300'
@@ -157,6 +163,8 @@ const EmployeeApplicationList = () => {
                         )}
                     </TableBody>
                 </Table>
+
+                <Pagination currentPage={currentPage} onPageChange={setCurrentPage} totalPages={total}/>
                  </div>
         </div >
     )

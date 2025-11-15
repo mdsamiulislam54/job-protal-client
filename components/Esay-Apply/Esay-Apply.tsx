@@ -176,9 +176,16 @@ const EasyApply: React.FC<EasyApplyProps> = ({ onHandleIsOpen, applicationId, em
                     />
                 </div>
 
-                <Button type="button" onClick={handleApply}>
-                    Apply
+                <Button type="button" onClick={handleApply} disabled={user?.role?.includes("employee") || user?.role?.includes("admin") ? true : false}>
+                    {
+                        user?.role?.includes("employee") || user?.role?.includes("admin") ? <p className="text-sm cursor-not-allowed ">
+                            Apply Only User
+                        </p> : "Apply"
+                    }
+
                 </Button>
+
+
             </form>
         </div>
     )

@@ -46,7 +46,7 @@ const ProfileDropDown = () => {
           </li>
           <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
             <FileText size={18} />
-            <Link href="employee/applications">Application List</Link>
+            <Link href="/employee/applications">Application List</Link>
           </li>
           <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
             <Briefcase size={18} />
@@ -68,7 +68,7 @@ const ProfileDropDown = () => {
       {/* ----- Logout ----- */}
       <li className="flex items-center gap-2 text-red-600 hover:text-red-700 transition-colors cursor-pointer">
         <LogOut size={18} />
-        <button onClick={() => signOut()}>Logout</button>
+        <button onClick={() => signOut()} className="cursor-pointer">Logout</button>
       </li>
     </ul>
   )

@@ -22,7 +22,6 @@ import Pagination from "@/components/Pagination/Pagination"
 import { CardContent } from "@/components/ui/card"
 import { Label } from "@radix-ui/react-dropdown-menu"
 import { X } from "lucide-react"
-import { MdUpdate } from "react-icons/md"
 import { handleAxiosError } from "@/lib/handleAxiosError/handleAxiosError"
 import { toast } from "react-toastify"
 import Swal from "sweetalert2"
@@ -113,6 +112,7 @@ const Myjobs = () => {
                             <TableHead className="text-center">Status</TableHead>
                             <TableHead className="text-center">Posted Date</TableHead>
                             <TableHead className="text-center">Deadline</TableHead>
+                            <TableHead className="text-center">Salary Range</TableHead>
                             <TableHead className="text-center">Action</TableHead>
                         </TableRow>
                     </TableHeader>
@@ -156,7 +156,7 @@ const Myjobs = () => {
 
 
                                     <TableCell className="flex justify-center gap-2">
-                                        <Button className="bg-red-600 hover:bg-red-400"><MdUpdate /></Button>
+                                        
                                         <Button
                                             onClick={() => handleCancelApplication(job._id)}
                                             className="bg-red-600 hover:bg-red-400"><X /></Button>
