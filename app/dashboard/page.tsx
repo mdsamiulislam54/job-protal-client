@@ -2,7 +2,7 @@
 
 const MainPage = () => {
   return (
-    <div>MainPage</div>
+    <div className="px-4">MainPage</div>
   )
 }
 

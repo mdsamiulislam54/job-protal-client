@@ -7,7 +7,7 @@ import { ModeToggle } from '../ToggleMode/ToggleMode';
 import { Menu, X } from 'lucide-react';
 import MobileNavbar from './MobileNavbar';
 import { AnimatePresence, motion } from "framer-motion";
-import { signOut, useSession } from 'next-auth/react';
+import {  useSession } from 'next-auth/react';
 import Image from 'next/image';
 import ProfileDropDown from './ProfileDropDown';
 

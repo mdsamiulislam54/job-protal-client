@@ -3,8 +3,12 @@ import "../(main)/globals.css"
 
 import ToastProvider from "@/lib/Provider/ToastProvider/ToastProvider";
 
-import { ThemeProvider } from "@/components/theme-provider/theme-provider";
+
 import SideBar from "./components/sidebar/page";
+import Navbar from "./components/navbar/page";
+import { ThemeProvider } from "@/components/theme-provider/theme-provider";
+import SessionWrapper from "@/lib/Provider/SessionProvider/SessionProvider";
+
 export default function DashboardLayout({
     children,
 }: {
@@ -12,23 +16,29 @@ export default function DashboardLayout({
 }) {
     return (
         <html lang="en">
-            <body className="hero-gradient  min-h-screen relative" >
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="system"
-                    enableSystem
-                    disableTransitionOnChange
-                />
-                {/* <div className="container-custom">
-                    <BackButton />
-                </div> */}
-                <div className=" w-full">
-                    <aside className="lg:block hidden fixed inset-0 w-[228px] h-full shadow-lg ">
+
+            <body className=" hero-gradient  min-h-screen relative" >
+
+                <SessionWrapper>
+                    <ThemeProvider
+                        attribute="class"
+                        defaultTheme="system"
+                        enableSystem
+                        disableTransitionOnChange
+                    />
+
+                    <aside className="lg:block hidden fixed inset-0 w-[238px] h-full shadow-lg ">
                         <SideBar />
                     </aside>
-                    <main className="lg:ml-64">{children}</main>
-                </div>
-                <ToastProvider />
+
+
+                    <main className="lg:ml-60 ">
+                        <Navbar />
+                        {children}
+                    </main>
+
+                    <ToastProvider />
+                </SessionWrapper>
             </body>
         </html>
     );
