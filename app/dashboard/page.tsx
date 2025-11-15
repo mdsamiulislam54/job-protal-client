@@ -1,8 +1,11 @@
+import DashboardHome from "./components/Home/Home"
 
 
 const MainPage = () => {
   return (
-    <div className="px-4">MainPage</div>
+    <div className="px-4">
+      <DashboardHome/>
+    </div>
   )
 }
 

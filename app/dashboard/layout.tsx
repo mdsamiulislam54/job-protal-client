@@ -8,6 +8,7 @@ import SideBar from "./components/sidebar/page";
 import Navbar from "./components/navbar/page";
 import { ThemeProvider } from "@/components/theme-provider/theme-provider";
 import SessionWrapper from "@/lib/Provider/SessionProvider/SessionProvider";
+import ReactQueryProvider from "@/lib/Provider/QueryClientProvider/QueryClientProvider";
 
 export default function DashboardLayout({
     children,
@@ -20,6 +21,8 @@ export default function DashboardLayout({
             <body className=" hero-gradient  min-h-screen relative" >
 
                 <SessionWrapper>
+
+                    <ReactQueryProvider>
                     <ThemeProvider
                         attribute="class"
                         defaultTheme="system"
@@ -38,6 +41,7 @@ export default function DashboardLayout({
                     </main>
 
                     <ToastProvider />
+                    </ReactQueryProvider>
                 </SessionWrapper>
             </body>
         </html>

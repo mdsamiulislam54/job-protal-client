@@ -3,8 +3,9 @@ import { ModeToggle } from '@/components/ToggleMode/ToggleMode'
 import { CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { useAuth } from '@/hook/UserHook/useAuth'
-import { BellRing, Search } from 'lucide-react'
+import { BellRing, Home, Search } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Navbar = () => {
     const {user} = useAuth()
@@ -29,6 +30,9 @@ const Navbar = () => {
                 </CardContent>
 
                 <div className='flex items-center gap-4'>
+                     <Link href={'/'} className='p-2 bg-primary rounded-md text-white'>
+                        <Home  className='' size={20}/>
+                    </Link>
                     <ModeToggle />
                     <div className='p-2 bg-primary rounded-md text-white'>
                         <BellRing  className='' size={20}/>
