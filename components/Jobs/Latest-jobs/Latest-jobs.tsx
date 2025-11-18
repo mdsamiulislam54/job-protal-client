@@ -4,16 +4,20 @@ import api from '@/lib/api/axios'
 import { useQuery } from '@tanstack/react-query'
 import LatestJobCard from './latest-job-card'
 import { JobFormType } from '@/types/jobTypes'
+import Loading from '@/components/Loading/Loading'
 
 const LatestJobs = () => {
 
-    const { data: jobs, isPending, error } = useQuery({
+    const { data: jobs,  isError, isLoading } = useQuery({
         queryKey: ['jobs'],
         queryFn: async () => {
             const res = await api.get('/job')
             return res?.data?.jobs ?? []
         },
     })
+
+    if (isLoading) return <Loading />
+    if (isError) return <p className="text-red-500">Error loading applications</p>
 
     return (
         <div className='py-16 bg-gray-50 dark:bg-background-dark'>
@@ -24,15 +28,15 @@ const LatestJobs = () => {
                         <span className='font-bold tracking-wider'>100+</span>
                     </div>
                     <div>
-                        <Button children="See All Jobs"/>
+                        <Button children="See All Jobs" />
                     </div>
                 </div>
                 <div className='grid grid-cols-1 gap-10'>
                     {
-                        jobs?.map((job: JobFormType) => <LatestJobCard key={job._id} job={job}/>)
+                        jobs?.map((job: JobFormType) => <LatestJobCard key={job._id} job={job} />)
                     }
 
-                    
+
                 </div>
             </div>
         </div>

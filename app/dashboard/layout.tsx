@@ -16,31 +16,31 @@ export default function DashboardLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
 
             <body className=" hero-gradient  min-h-screen relative" >
-
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    
+                />
                 <SessionWrapper>
 
                     <ReactQueryProvider>
-                    <ThemeProvider
-                        attribute="class"
-                        defaultTheme="system"
-                        enableSystem
-                        disableTransitionOnChange
-                    />
-
-                    <aside className="lg:block hidden fixed inset-0 w-[238px] h-full shadow-lg ">
-                        <SideBar />
-                    </aside>
 
 
-                    <main className="lg:ml-60 ">
-                        <Navbar />
-                        {children}
-                    </main>
+                        <aside className="lg:block hidden fixed inset-0 w-[238px] h-full shadow-lg dark:border-r border-gray-600 ">
+                            <SideBar />
+                        </aside>
 
-                    <ToastProvider />
+
+                        <main className="lg:ml-60 ">
+                            <Navbar />
+                            {children}
+                        </main>
+
+                        <ToastProvider />
                     </ReactQueryProvider>
                 </SessionWrapper>
             </body>

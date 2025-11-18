@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query"
 import { LayoutGrid, UserCheck, Building2, ListChecks } from "lucide-react"
 import DashboardJobChart from "../DashboardJobsChart/JobChart";
 import DashboardChartsPie from "../DashboardJobsChart/JobsTypeAndExp";
+import Latest_Application_table from "../Latest_Application_table/Latest_Application_table";
 
 const DashboardHome = () => {
 
@@ -64,12 +65,12 @@ const DashboardHome = () => {
                 {stats.map((item, index) => (
                     <div
                         key={index}
-                        className="flex items-center justify-between bg-white dark:bg-gray-900 
+                        className="flex items-center justify-between bg-white dark:bg-background-dark 
           p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 
           hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer"
                     >
                         <div>
-                            <h2 className="text-gray-500 text-sm">{item.title}</h2>
+                            <h2 className="text-gray-500 dark:text-gray-100 text-sm">{item.title}</h2>
                             <p className="text-3xl font-bold mt-1">{item.value}</p>
                         </div>
 
@@ -82,11 +83,13 @@ const DashboardHome = () => {
             </div>
 
             <div className="w-full">
-                {/* <div className="w-full">
-                    <DashboardChartsPie />
-                </div> */}
+              
                 <div className="">
                     <DashboardJobChart />
+                </div>
+
+                <div className="my-10 bg-background rounded-2xl dark:bg-background-dark">
+                    <Latest_Application_table/>
                 </div>
 
             </div>

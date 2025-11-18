@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import api from "@/lib/api/axios";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A28DD0"];
+const COLORS = ["#0088FE", "#9d5cff", "#FFBB28", "#FF8042", "#A28DD0"];
 
 type ChartDataItem = {
   [key: string]: string | number;
@@ -19,8 +19,8 @@ interface PieChartCardProps {
 }
 
 const PieChartCard = ({ title, data, dataKey, nameKey }: PieChartCardProps) => (
-  <div className="bg-white dark:bg-gray-900 p-4 rounded-xl w-full mx-auto shadow-lg">
-    <h2 className="text-gray-600 font-semibold mb-4">{title}</h2>
+  <div className="bg-white dark:bg-background-dark dark:border border-gray-600 p-4 rounded-xl w-full mx-auto shadow-lg ">
+    <h2 className="text-gray-600 dark:text-gray-100 font-semibold mb-4">{title}</h2>
     <ResponsiveContainer width="100%" height={250}>
       <PieChart>
         <Pie
@@ -62,7 +62,7 @@ export default function DashboardCharts() {
   if (!data) return <p>No data available.</p>;
 
   return (
-    <div className="grid md:flex w-full md:justify-between items-center justify-center gap-6 py-10">
+    <div className="grid md:flex w-full md:justify-between items-center justify-center gap-6 py-10 mb-10">
       {/* Pie Charts */}
       <PieChartCard
         title="Jobs by Experience Level"

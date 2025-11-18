@@ -45,7 +45,7 @@ const SideBar = () => {
   ];
 
   return (
-    <div className='flex flex-col justify-center items-center p-4'>
+    <div className='flex flex-col justify-center items-center p-4 '>
       <div className='w-full flex justify-center items-center my-5'>
         <Image
           src={user?.image || ''}

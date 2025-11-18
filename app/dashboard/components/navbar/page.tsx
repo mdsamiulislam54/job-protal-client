@@ -10,7 +10,7 @@ import Link from 'next/link'
 const Navbar = () => {
     const {user} = useAuth()
     return (
-        <div className='w-full p-4 shadow'>
+        <div className='w-full p-4 shadow dark:border-b border-gray-700'>
             <div className='flex justify-between'>
 
                 <CardContent className=" space-y-2">

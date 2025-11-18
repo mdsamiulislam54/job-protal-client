@@ -39,9 +39,9 @@ export default function JobsPerDayChart({ month, year }: JobsPerDayChartProps) {
   if (!data || data.length === 0) return <p>No jobs found for this month.</p>;
 
   return (
-    <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg">
-      <h2 className="text-gray-600 font-semibold mb-4">
-        Jobs Posted (1–30)
+    <div className="bg-white dark:bg-background-dark p-6 rounded-xl shadow-lg">
+      <h2 className="text-gray-600 dark:text-gray-200 text-2xl font-semibold mb-4">
+        Jobs Posted (1–30) Month
       </h2>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data}>

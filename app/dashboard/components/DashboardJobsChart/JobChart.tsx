@@ -27,17 +27,17 @@ const DashboardJobChart = () => {
   if (isError) return <p>Failed to load chart</p>;
 
   return (
-    <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg">
+    <div className="bg-white dark:bg-background-dark p-6 rounded-xl shadow-lg">
       <h2 className="text-xl font-semibold mb-5">Jobs by Title</h2>
 
       <div className="w-full h-80">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="title" />
+            <XAxis dataKey="title"/>
             <YAxis />
             <Tooltip />
-            <Bar dataKey="totalJobs" fill="#4f46e5" radius={[6, 6, 0, 0]} />
+            <Bar dataKey="totalJobs" fill="#9d5cff" radius={[6, 6, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>
