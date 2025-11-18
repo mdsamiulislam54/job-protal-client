@@ -15,18 +15,19 @@ import { Button } from "@/components/ui/button"
 import { Linkedin, Github, Dock, X } from "lucide-react"
 import Loading from "@/components/Loading/Loading"
 import Link from "next/link"
-import Pagination from "@/components/Pagination/Pagination"
+
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { toast } from "react-toastify"
 import Swal from "sweetalert2"
 import { handleAxiosError } from "@/lib/handleAxiosError/handleAxiosError"
+import Pagination from "@/components/Pagination/Pagination"
 const ApplicationTable = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage , setCurrentPage] = useState(1);
   const [sortBy, setSortBy] = useState("all")
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["latestApplications", currentPage, sortBy],
     queryFn: async () => {
-      const response = await api.get(`/dashboard/latest/application?page=${currentPage}&limit=${10}&sort=${sortBy}`,)
+      const response = await api.get(`/dashboard/latest/application?page=${currentPage}&limit=${5}&sort=${sortBy}`,)
       return response.data
     },
     staleTime: 0,
@@ -38,7 +39,9 @@ const ApplicationTable = () => {
   if (isError) return <p className="text-red-500">Error loading applications</p>
 
   const applications = data.application || [];
-  const total = data.total ?? 10
+  const total = data.totalPage || 10
+
+  console.log(total)
 
   const handleApplicationAction = async (id: string, action: "accept" | "reject" | "delete") => {
     // Confirm message
@@ -200,7 +203,7 @@ const ApplicationTable = () => {
         </Table>
       </div>
 
-      <Pagination currentPage={currentPage} onPageChange={setCurrentPage} totalPages={total} />
+       <Pagination currentPage={currentPage} onPageChange={setCurrentPage} totalPages={total}/>
 
     </div>
   )
