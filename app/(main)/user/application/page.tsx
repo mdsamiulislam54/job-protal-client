@@ -17,15 +17,19 @@ import { ApplicationType } from "@/types/applicationType"
 import { Button } from "@/components/ui/button"
 import { handleAxiosError } from "@/lib/handleAxiosError/handleAxiosError"
 import { toast } from "react-toastify"
+import { useState } from "react"
+import Pagination from "@/components/Pagination/Pagination"
 
 const Application = () => {
     const { user } = useAuth()
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPage, setTotalPage] = useState(0)
     const { data: applications, isError, isLoading, refetch } = useQuery({
-        queryKey: ['user-application', user?.email],
+        queryKey: ['user-application', user?.email, currentPage],
         queryFn: async () => {
             if (!user?.email) return []
-            const res = await api.get(`/application/${user.email}`)
+            const res = await api.get(`/application/${user.email}?page=${currentPage}&limit=${10}`);
+            setTotalPage(res?.data?.total)
             return res.data.application || []
         },
         enabled: !!user?.email
@@ -88,7 +92,7 @@ const Application = () => {
                                 </TableCell>
                             </TableRow>
                         ) : (
-                            applications.map((app: ApplicationType) => (
+                            applications?.map((app: ApplicationType) => (
                                 <TableRow key={app._id} className="">
                                     <TableCell className="font-medium">{app.title}</TableCell>
                                     <TableCell>{app.companyName}</TableCell>
@@ -137,6 +141,8 @@ const Application = () => {
                     </TableBody>
                 </Table>
             </div>
+
+            <Pagination currentPage={currentPage} onPageChange={setCurrentPage} totalPages={totalPage}/>
         </div>
     )
 }

@@ -29,7 +29,7 @@ const SideBar = () => {
     },
     {
       label: "Manage All User",
-      href: "/dashboard/analyst",
+      href: "/dashboard/manage-user",
       icon: <Users className="w-4 h-4" />,
     },
     {
