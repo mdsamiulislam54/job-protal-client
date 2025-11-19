@@ -68,7 +68,7 @@ const ManageUser = () => {
   if (isLoading) return <p className="text-center py-10">Loading...</p>;
 
   return (
-    <div className="p-5 border mx-4 dark:border border-gray-600 rounded-2xl">
+    <div className="p-5 border m-6 dark:border border-gray-600 rounded-2xl">
       <h1 className="text-2xl font-bold mb-5">Manage Users</h1>
 
       <Table>

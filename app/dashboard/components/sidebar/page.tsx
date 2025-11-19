@@ -24,7 +24,7 @@ const SideBar = () => {
     },
     {
       label: "Pending Application",
-      href: "/dashboard/application/pending",
+      href: "/dashboard/pending_application",
       icon: <Clock className="w-4 h-4" />,
     },
     {
@@ -32,11 +32,7 @@ const SideBar = () => {
       href: "/dashboard/manage-user",
       icon: <Users className="w-4 h-4" />,
     },
-    {
-      label: "Manage All Employee",
-      href: "/dashboard/employee",
-      icon: <UserCheck className="w-4 h-4" />,
-    },
+  
     {
       label: "Application Report",
       href: "/dashboard/report",
