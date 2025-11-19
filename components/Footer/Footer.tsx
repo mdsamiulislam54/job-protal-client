@@ -45,7 +45,7 @@ const Footer = () => {
                 {/* Contact Info */}
                 <div className="max-md:flex flex-col justify-center items-center">
                     <h3 className="text-xl font-bold mb-4">Contact</h3>
-                    <div className="space-y-2 max-md:flex gap-8 flex-wrap">
+                    <div className=" space-y-2 max-md:flex gap-8 flex-wrap">
                         <p className="flex items-center gap-2">
                             <Mail size={18} className="text-primary" /> info@jobportal.com
                         </p>

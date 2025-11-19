@@ -31,10 +31,10 @@ const Hero = () => {
   
 
     return (
-        <div className=' min-h-screen flex flex-col justify-center items-center hero-gradient  max-sm:py-20 md:pt-40   
+        <div className=' min-h-screen  flex flex-col justify-center items-center hero-gradient  max-sm:pt-30 max-lg:pb-20 md:pt-40   
         '
         >
-            <div className="custom-container md:space-y-10 space-y-8 flex flex-col justify-center items-center">
+            <div className="custom-container md:space-y-10 space-y-14 flex flex-col justify-center items-center">
              <div>
                    <p className='text-center syne text-sm sm:text-md font-bold mb-4'>Discover Jobs, Careers, and New Opportunities</p>
                 <h1 className="lg:text-5xl md:text-3xl text-2xl  font-extrabold text-center">

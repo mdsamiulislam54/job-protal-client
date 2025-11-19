@@ -11,6 +11,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import Loading from "@/components/Loading/Loading";
 
 type DailyJobData = {
   date: string;
@@ -34,7 +35,7 @@ export default function JobsPerDayChart({ month, year }: JobsPerDayChartProps) {
     staleTime: 5 * 60 * 1000, // optional: cache for 5 minutes
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading/>;
   if (error) return <p>Failed to load jobs per day.</p>;
   if (!data || data.length === 0) return <p>No jobs found for this month.</p>;
 

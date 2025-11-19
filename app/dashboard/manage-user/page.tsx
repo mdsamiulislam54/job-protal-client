@@ -17,6 +17,7 @@ import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import Pagination from "@/components/Pagination/Pagination";
+import Loading from "@/components/Loading/Loading";
 
 const ManageUser = () => {
  const [currentPage, setCurrentPage] = useState(1);
@@ -65,7 +66,7 @@ const ManageUser = () => {
     }
   };
 
-  if (isLoading) return <p className="text-center py-10">Loading...</p>;
+  if (isLoading) return <Loading/>;
 
   return (
     <div className="p-5 border lg:m-6 m-2 mt-10 dark:border border-gray-600 rounded-2xl">

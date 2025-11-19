@@ -3,6 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "@/lib/api/axios";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
+import Loading from "@/components/Loading/Loading";
 
 const COLORS = ["#0088FE", "#9d5cff", "#FFBB28", "#FF8042", "#A28DD0"];
 
@@ -57,7 +58,7 @@ export default function DashboardCharts() {
     },
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading/>;
   if (error) return <p>Failed to load chart data.</p>;
   if (!data) return <p>No data available.</p>;
 

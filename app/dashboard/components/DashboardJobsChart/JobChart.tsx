@@ -12,6 +12,7 @@ import {
   CartesianGrid,
   ResponsiveContainer
 } from "recharts";
+import Loading from "@/components/Loading/Loading";
 
 const DashboardJobChart = () => {
 
@@ -23,7 +24,7 @@ const DashboardJobChart = () => {
     }
   });
 
-  if (isLoading) return <p>Loading chart...</p>;
+  if (isLoading) return <Loading/>;
   if (isError) return <p>Failed to load chart</p>;
 
   return (
