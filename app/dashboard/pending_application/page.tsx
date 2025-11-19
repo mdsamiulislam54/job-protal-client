@@ -78,7 +78,7 @@ const PendingApplication = () => {
   
 
     return (
-        <div className="py-10 m-6">
+        <div className="py-10 lg:m-6 m-2">
 
                 <div className="custom-container overflow-x-auto bg-background dark:bg-background-dark dark:border border-gray-700 p-4 rounded-md">
                 <Table className="min-w-full shadow ">

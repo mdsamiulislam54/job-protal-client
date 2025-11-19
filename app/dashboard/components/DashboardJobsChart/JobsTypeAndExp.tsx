@@ -19,7 +19,7 @@ interface PieChartCardProps {
 }
 
 const PieChartCard = ({ title, data, dataKey, nameKey }: PieChartCardProps) => (
-  <div className="bg-white dark:bg-background-dark dark:border border-gray-600 p-4 rounded-xl w-full mx-auto shadow-lg ">
+  <div className="bg-white  dark:bg-background-dark dark:border border-gray-600 p-4 rounded-xl w-full mx-auto shadow-lg ">
     <h2 className="text-gray-600 dark:text-gray-100 font-semibold mb-4">{title}</h2>
     <ResponsiveContainer width="100%" height={250}>
       <PieChart>
@@ -62,7 +62,7 @@ export default function DashboardCharts() {
   if (!data) return <p>No data available.</p>;
 
   return (
-    <div className="grid md:flex w-full md:justify-between items-center justify-center gap-6 py-10 mb-10">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 py-10 space-y-4">
       {/* Pie Charts */}
       <PieChartCard
         title="Jobs by Experience Level"
