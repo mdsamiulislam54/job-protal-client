@@ -20,7 +20,7 @@ const Navbar = () => {
   const navItem = [
     { name: "Home", href: "/", icon: Home },
     { name: "Jobs", href: "/jobs", icon: Briefcase },
-    { name: "Companies", href: "/companies", icon: Building2 },
+    { name: "Companies", href: "/company-list", icon: Building2 },
     { name: "About", href: "/about", icon: Info },
     { name: "Contact", href: "/contact", icon: Phone },
   ];
