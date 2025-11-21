@@ -25,7 +25,7 @@ const JobPage = () => {
 
     queryFn: async () => {
       const query = encodeURIComponent(JSON.stringify(filterData));
-      const res = await api.get(`/all-jobs?page=${currentPage}&limit=${4}&filter=${query}`, {
+      const res = await api.get(`/all-jobs?page=${currentPage}&limit=${5}&filter=${query}`, {
         headers: { 'Cache-Control': 'no-cache' }
       });
       return res?.data

@@ -20,9 +20,9 @@ import Pagination from "@/components/Pagination/Pagination";
 import Loading from "@/components/Loading/Loading";
 
 const ManageUser = () => {
- const [currentPage, setCurrentPage] = useState(1);
- const [totalPage, setTotalPage] = useState(0)
-  const { data:users, refetch, isLoading } = useQuery({
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(0)
+  const { data: users, refetch, isLoading } = useQuery({
     queryKey: ["all-users", currentPage],
     queryFn: async () => {
       const res = await api.get(`/dashboard/get-user?page=${currentPage}&limit=${10}`);
@@ -55,10 +55,14 @@ const ManageUser = () => {
 
   // ======== Change Role ===========
   const handleChangeRole = async (id: string, role: string) => {
-    const newRole = role === "admin" ? "user" : "admin";
+    const roles = ["user", "admin", "employee"];
+
+    // next role decide (if you want rotation)
+    const nextRoleIndex = (roles.indexOf(role) + 1) % roles.length;
+    const newRole = roles[nextRoleIndex];
 
     try {
-      await api.patch(`/dashboard/update-role/${id}?role=${newRole}`);
+      await api.patch(`/dashboard/change/role/${id}`, { role: newRole });
       toast.success(`Role changed to ${newRole}`);
       refetch();
     } catch (error: any) {
@@ -66,7 +70,7 @@ const ManageUser = () => {
     }
   };
 
-  if (isLoading) return <Loading/>;
+  if (isLoading) return <Loading />;
 
   return (
     <div className="p-5 border lg:m-6 m-2 mt-10 dark:border border-gray-600 rounded-2xl">
@@ -113,7 +117,7 @@ const ManageUser = () => {
 
               <TableCell className="text-right space-x-2">
                 <Button
-                  
+
                   size="sm"
                   onClick={() => handleDelete(user._id)}
                 >
@@ -121,23 +125,21 @@ const ManageUser = () => {
                 </Button>
 
                 <Button
-                  
+
                   size="sm"
                   onClick={() => handleChangeRole(user._id, user.role[0])}
                 >
                   Change Role
                 </Button>
 
-                <Button  size="sm">
-                  Update
-                </Button>
+                
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
 
-      <Pagination totalPages={totalPage} currentPage={currentPage} onPageChange={setCurrentPage}/>
+      <Pagination totalPages={totalPage} currentPage={currentPage} onPageChange={setCurrentPage} />
     </div>
   );
 };
