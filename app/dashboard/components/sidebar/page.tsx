@@ -3,7 +3,8 @@
 import { useAuth } from '@/hook/UserHook/useAuth'
 import Image from 'next/image';
 import Link from 'next/link'
-import { Home, FileText, Clock, Users, UserCheck, BarChart } from "lucide-react";
+import { Home, FileText, Clock, Users, UserCheck, BarChart, BriefcaseBusiness } from "lucide-react";
+import { BiSolidJoystickButton } from 'react-icons/bi';
 
 const SideBar = () => {
   const { user } = useAuth();
@@ -16,6 +17,11 @@ const SideBar = () => {
       label: "Home",
       href: "/dashboard",
       icon: <Home className="w-4 h-4" />,
+    },
+    {
+      label: "Manage All Jobs ",
+      href: "/dashboard/manage-jobs",
+      icon: <BriefcaseBusiness className="w-4 h-4" />
     },
     {
       label: "Manage Application",
@@ -32,7 +38,7 @@ const SideBar = () => {
       href: "/dashboard/manage-user",
       icon: <Users className="w-4 h-4" />,
     },
-  
+
     {
       label: "Application Report",
       href: "/dashboard/report",
