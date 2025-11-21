@@ -27,7 +27,7 @@ const ContactPage = () => {
             <div className="custom-container ">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     {/* Left: Contact Info */}
-                    <div className="space-y-6 bg-background dark:bg-background-dark shadow-lg dark:shadow-gray-700 p-8">
+                    <div className="space-y-6 bg-background dark:bg-background-dark shadow-lg dark:shadow-gray-700 lg:p-8 p-2">
                         <h2 className="text-3xl font-bold text-primary dark:text-white syne">Contact Us</h2>
                         <p className="text-gray-700 dark:text-gray-300 ">
                             Have questions or need assistance? Reach out to us and we’ll get back to you as soon as possible.
@@ -47,7 +47,7 @@ const ContactPage = () => {
                     </div>
 
                     {/* Right: Feedback Form */}
-                    <div className="bg-white dark:bg-background-dark shadow-lg rounded-2xl dark:shadow-gray-700 p-8">
+                    <div className="bg-white dark:bg-background-dark shadow-lg rounded-2xl dark:shadow-gray-700 lg:p-8 p-2">
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
                                 <label className="block text-gray-700 dark:text-gray-300 mb-1">Name</label>

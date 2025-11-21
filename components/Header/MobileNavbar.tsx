@@ -5,6 +5,7 @@ import Logo from '../Logo/Logo';
 import { Button } from '../ui/button';
 import { motion } from "framer-motion";
 import { useSession } from 'next-auth/react';
+import { useAuth } from '@/hook/UserHook/useAuth';
 
 type Props = {
     navItem: NavItem[];
@@ -12,7 +13,7 @@ type Props = {
     isOpen: boolean
 }
 const MobileNavbar = ({ navItem, handleOpenMenu, isOpen }: Props) => {
-    const { data: session } = useSession()
+    const { user } = useAuth()
 
     return (
         <motion.div
@@ -43,17 +44,18 @@ const MobileNavbar = ({ navItem, handleOpenMenu, isOpen }: Props) => {
                     }
                     )
                 }
-
+             
                 {
-                    !session?.user ? <div className='flex gap-2'>
+
+                    user === null && <div className='flex gap-2'>
                         <Link href="/auth/login" >
-                            <Button children="Login" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne hidden lg:block ' />
+                            <Button children="Login" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne  lg:block ' />
                         </Link>
                         <Link href={'/auth/register'}>
-                            <Button children="Registration" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne hidden lg:block ' />
+                            <Button children="Registration" className='text-white cursor-pointer hover:bg-ascent hover:text-text transition-all duration-200 syne  lg:block ' />
                         </Link>
                     </div>
-                    :<div></div>
+
                 }
 
             </div >

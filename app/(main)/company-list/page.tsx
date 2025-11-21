@@ -24,9 +24,9 @@ const CompanyList = () => {
     if (isError) return <p className="text-center py-10 text-red-500">Error loading companies</p>;
 
     return (
-        <div className="text-center syne text-3xl font-bold mb-6">
+        <div className="text-center syne text-3xl font-bold my-6">
             <div className="custom-container">
-                <div className="p-6 grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <div className=" grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {companies.map((company: any) => (
                         <div
                             key={company.companyName}

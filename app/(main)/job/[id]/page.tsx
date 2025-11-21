@@ -67,8 +67,8 @@ const JobDetails = ({ params }: { params: Promise<{ id: string }> }) => {
   }
 
   return (
-    <div className="min-h-screen  py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
-      <div className="max-w-5xl mx-auto shadow-lg rounded-2xl p-8 md:p-10 space-y-10 transition-colors duration-300">
+    <div className="min-h-screen  py-12 px-1 sm:px-6 lg:px-8 transition-colors duration-300">
+      <div className="max-w-5xl mx-auto shadow-lg rounded-2xl p-2 md:p-10 space-y-10 transition-colors duration-300">
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
           <div className="flex items-center gap-4 ">
