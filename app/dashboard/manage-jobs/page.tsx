@@ -97,7 +97,7 @@ const Manage_Jobs = () => {
         await api.delete(`/dashboard/delete/job/${id}`);
         refetch();
     };
-console.log(sort)
+    console.log(sort)
     return (
         <div className=" dark:border border-gray-600 rounded-xl m-6 max-sm:m-2">
             <CardHeader className="flex flex-row items-center justify-between my-5">
@@ -105,7 +105,7 @@ console.log(sort)
 
                 {/*  Sort Filter (ShadCN) */}
                 <Select value={sort} onValueChange={(value) => setSort(value)} >
-                    <SelectTrigger  className="w-[180px]">
+                    <SelectTrigger className="w-[180px]">
                         <SelectValue placeholder="Sort by" />
                     </SelectTrigger>
                     <SelectContent className="bg-background dark:bg-background-dark">
@@ -164,8 +164,8 @@ console.log(sort)
                                         <TableCell>
                                             <span
                                                 className={`px-2 py-1 rounded text-xs ${job.status === "pending"
-                                                        ? "bg-yellow-200 text-yellow-700"
-                                                        : "bg-green-200 text-green-700"
+                                                    ? "bg-yellow-200 text-yellow-700"
+                                                    : "bg-green-200 text-green-700"
                                                     }`}
                                             >
                                                 {job.status}
