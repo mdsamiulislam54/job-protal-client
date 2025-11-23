@@ -46,20 +46,22 @@ const handler = NextAuth({
 
     session: {
         strategy: "jwt",
-          maxAge: 24 * 60 * 60
+        maxAge: 60 * 60 * 24 * 30,
+    
     },
-    secret: process.env.NEXT_AUTH_SECRET as string,
+    secret: process.env.NEXTAUTH_SECRET as string,
     callbacks: {
-        async jwt({ token, user }) {
+        async jwt({ token,user }) {
             if (user) {
+                token.email = user.email;
                 token.id = user.id;
-                token.role = user?.role;
+                token.role = user.role;
                 token.image = user.image;
             }
             return token;
         },
         async session({ session, token }) {
-            console.log("Session", session)
+
             if (session.user && token) {
                 session.user.id = token.id as string;
                 session.user.role = token.role as string;
